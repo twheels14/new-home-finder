@@ -165,7 +165,7 @@ clear_all:"Clear all selections",tip_added:"added",tip_removed:"removed",tip_cir
 live_sel:"{n} community selected, {h} homes|{n} communities selected, {h} homes",live_none:"Nothing selected means anywhere.",map_aria:"Map of communities. Tap a dot to add or remove it.",
 q2_h:"How are you buying, and what is your budget?",q2_sub_cash:"No loan needed. Enter the most you want to spend.",q2_sub_loan:"Enter the most you want to spend. Switch between a monthly payment and a total price.",
 with_loan:"With a loan",pay_cash:"Paying cash",monthly:"Monthly payment",total:"Total price",per_month:"per month, up to",up_to:"up to",
-loan_h:"Loan type used for payments",most_common:"(most common)",l_FHA:"3.5% down",l_Conventional:"5% down",l_VA:"0% down, veterans",l_USDA:"0% down, rural areas",n_Conventional:"Conventional",
+loan_h:"Loan type used for payments",most_common:"(most common)",l_FHA:"3.5% down",l_Conventional:"10% down",l_VA:"0% down, veterans",l_USDA:"0% down, rural areas",n_Conventional:"Conventional",
 cash_note:"Each home will show its price, plus an estimate of the monthly property tax and insurance an owner pays.",
 fit:"{n} home fits so far|{n} homes fit so far",
 q3_h:"How much room do you need?",q3_sub:"Choose the fewest bedrooms you can live with.",bedrooms:"Bedrooms",sqft_h:"Square feet",any:"Any",
@@ -203,7 +203,7 @@ clear_all:"Borrar todas las selecciones",tip_added:"agregada",tip_removed:"quita
 live_sel:"{n} comunidad seleccionada, {h} casas|{n} comunidades seleccionadas, {h} casas",live_none:"Si no selecciona nada, se muestra todo.",map_aria:"Mapa de comunidades. Toque un punto para agregarlo o quitarlo.",
 q2_h:"¿Cómo va a comprar y cuál es su presupuesto?",q2_sub_cash:"No se necesita préstamo. Ingrese lo máximo que desea gastar.",q2_sub_loan:"Ingrese lo máximo que desea gastar. Cambie entre pago mensual y precio total.",
 with_loan:"Con préstamo",pay_cash:"Pago en efectivo",monthly:"Pago mensual",total:"Precio total",per_month:"por mes, hasta",up_to:"hasta",
-loan_h:"Tipo de préstamo para los pagos",most_common:"(el más común)",l_FHA:"3.5% de enganche",l_Conventional:"5% de enganche",l_VA:"0% de enganche, veteranos",l_USDA:"0% de enganche, zonas rurales",n_Conventional:"Convencional",
+loan_h:"Tipo de préstamo para los pagos",most_common:"(el más común)",l_FHA:"3.5% de enganche",l_Conventional:"10% de enganche",l_VA:"0% de enganche, veteranos",l_USDA:"0% de enganche, zonas rurales",n_Conventional:"Convencional",
 cash_note:"Cada casa mostrará su precio y un estimado de los impuestos y el seguro mensuales que paga un propietario.",
 fit:"{n} casa cumple hasta ahora|{n} casas cumplen hasta ahora",
 q3_h:"¿Cuánto espacio necesita?",q3_sub:"Elija el menor número de recámaras con el que pueda vivir.",bedrooms:"Recámaras",sqft_h:"Pies cuadrados",any:"Cualquiera",
@@ -241,7 +241,7 @@ clear_all:"נקה את כל הבחירות",tip_added:"נוספה",tip_removed:"
 live_sel:"שכונה אחת נבחרה, {h} בתים|{n} שכונות נבחרו, {h} בתים",live_none:"אם לא בוחרים דבר, מוצגים כל האזורים.",map_aria:"מפת השכונות. הקש על נקודה להוספה או הסרה.",
 q2_h:"איך אתה קונה, ומה התקציב שלך?",q2_sub_cash:"אין צורך בהלוואה. הזן את הסכום המרבי שאתה רוצה להוציא.",q2_sub_loan:"הזן את הסכום המרבי שאתה רוצה להוציא. אפשר לבחור בין תשלום חודשי למחיר כולל.",
 with_loan:"עם הלוואה",pay_cash:"תשלום במזומן",monthly:"תשלום חודשי",total:"מחיר כולל",per_month:"לחודש, עד",up_to:"עד",
-loan_h:"סוג ההלוואה לחישוב התשלומים",most_common:"(הנפוץ ביותר)",l_FHA:"3.5% מקדמה",l_Conventional:"5% מקדמה",l_VA:"ללא מקדמה, ותיקי צבא",l_USDA:"ללא מקדמה, אזורים כפריים",n_Conventional:"קונבנציונלית",
+loan_h:"סוג ההלוואה לחישוב התשלומים",most_common:"(הנפוץ ביותר)",l_FHA:"3.5% מקדמה",l_Conventional:"10% מקדמה",l_VA:"ללא מקדמה, ותיקי צבא",l_USDA:"ללא מקדמה, אזורים כפריים",n_Conventional:"קונבנציונלית",
 cash_note:"כל בית יוצג עם מחירו ועם הערכה של מס הרכוש והביטוח החודשיים שמשלם בעל הבית.",
 fit:"בית אחד מתאים עד כה|{n} בתים מתאימים עד כה",
 q3_h:"כמה מקום אתה צריך?",q3_sub:"בחר את מספר חדרי השינה המינימלי שמספיק לך.",bedrooms:"חדרי שינה",sqft_h:"רגל רבוע (sq ft)",any:"הכול",
@@ -283,7 +283,7 @@ let C=[],H=[],DATA=null,AREAS=[];
 const RATE=.0575, TERM=360, HOI=.003, HS=.8;
 const LOANS={
   FHA:{name:"FHA",d:.035,f:.0175,mi:.0055},
-  Conventional:{name:"Conventional",d:.05,f:0,mi:.0089},
+  Conventional:{name:"Conventional",d:.10,f:0,mi:.0089},
   VA:{name:"VA",d:0,f:.0215,mi:0},
   USDA:{name:"USDA",d:0,f:.01,mi:.0035},
   Cash:{name:"Cash",d:1,f:0,mi:0}
