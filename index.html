@@ -312,7 +312,7 @@ function payment(h,L){
   const mi=l.d>=.2?0:l.mi;
   return Math.round(pi + h.price*h.tax*HS/12 + h.price*HOI/12 + base*mi/12 + C[h.c].sa/12);
 }
-const AREADEF=[["saO","g_sa"],["saS","g_sa"],["saE","g_sa"],["saW","g_sa"],["conv","g_bey"],["hill","g_bey"],["sanmarcos","g_bey"],["nb","g_bey"],["austin","g_bey"],["gaustin","g_bey"],["south","g_bey"],["central","g_bey"]];
+const AREADEF=[["saO","g_sa"],["saS","g_sa"],["saE","g_sa"],["saW","g_sa"],["nb","g_bey"],["conv","g_bey"],["hill","g_bey"],["sanmarcos","g_bey"],["austin","g_bey"],["gaustin","g_bey"]];
 let TYPTAX=0.0237;
 const USDA={"Flint Ridge":1,"Friendship Oaks":1,"Gatehouse":1,"Juniper Ranch":1,"Morgan Heights":1,"Parkside":1,"Pradera":1,"Rancho Del Cielo":1,"Red Hawk Landing":1,"Steelwood Trails":1,"Voss Farms":1,"Bertram Oaks":2,"Cool Water at Sonterra":2,"Cotton Gateway":2,"Enclave at Horizon Pointe":2,"Flora Meadows":2,"Grace Gardens":2,"Grace Valley":2,"Higdon Crossing":2,"Kyndwood":2,"Lively Ranch":2,"Morgan Meadows":2,"Navarro Ranch":2,"Pleasanton Meadows":2,"Plum Creek North":2,"River Bridge Ranch":2,"Rose Valley":2,"Ruby Crossing":2,"Sapphire Grove":2,"Sky Ranch":2,"Smiley Ranch":2,"Stone Garden":2,"Summerside":2,"Sunshine Trails":2,"The Ridge at Knob Creek":2,"Thunder Rock":2,"Valle Sol":2,"Windridge":2};
 const usdaTag=c=>{const u=USDA[c.name];return u===1?'<span class="tag usda" title="'+esc(t("usda_tip"))+'">'+esc(t("usda_tag"))+'</span>':(u===2&&S.loan==="USDA"&&!S.cash)?'<span class="tag usda chk" title="'+esc(t("usda_chk_tip"))+'">'+esc(t("usda_chk"))+'</span>':'';};
