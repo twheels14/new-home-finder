@@ -190,7 +190,7 @@ by_comm:"By community",all_homes:"All homes",sort:"Sort:",s_pay:"Lowest payment"
 comm_match:"{n} home matches|{n} homes match",more_homes:"Show {n} more home|Show {n} more homes",more_comm:"Show {n} more communities ({m} not shown yet)",show40:"Show 40 more",
 facts:"{bd} bd · {ba} ba · {sf} sq ft · {fl} · {plan}",story:"1 story|{n} stories",per_mo:"/mo",taxins:"about {x}/mo tax & insurance",
 view_map:"View community",ready_tag:"Move-in ready",closing:"Ready by {d}",ready_now:"Ready now",dropped:"▼ Price dropped {x}",was:"was {x}",
-copy:"Copy this list to send",copied:"List copied",share:"Copy link to these results",shared:"Link copied",est:"(estimated)",lowtax:"Low tax rate",lowtax_tip:"Estimated property tax {x}, below the typical {z}",restart:"Start over",
+copy:"Copy this list to send",copied:"List copied",share:"Copy link to these results",shared:"Link copied",est:"(estimated)",incent_to:"{t} now to {d}",lowtax:"Low tax rate",lowtax_tip:"Estimated property tax {x}, below the typical {z}",restart:"Start over",
 nomatch_h:"No homes fit all of that. Try one of these:",more_opt_h:"Want to see more options?",
 sg_area:"Look anywhere in Texas",sg_beds:"Allow any number of bedrooms",sg_sqft:"Allow any size",sg_when:"Allow any move-in date",sg_budget:"Raise the budget by about 10% ({x})",sg_loan:"See payments as a {l} loan",sg_drops:"Include homes without price drops",
 signup_h:"Get new inventory and incentives by email each week",signup_btn:"Sign up (30 seconds)",
@@ -228,7 +228,7 @@ by_comm:"Por comunidad",all_homes:"Todas las casas",sort:"Ordenar:",s_pay:"Pago 
 comm_match:"{n} casa coincide|{n} casas coinciden",more_homes:"Mostrar {n} casa más|Mostrar {n} casas más",more_comm:"Mostrar {n} comunidades más ({m} aún sin mostrar)",show40:"Mostrar 40 más",
 facts:"{bd} rec · {ba} baños · {sf} pies² · {fl} · {plan}",story:"1 piso|{n} pisos",per_mo:"/mes",taxins:"aprox. {x}/mes en impuestos y seguro",
 view_map:"Ver comunidad",ready_tag:"Lista para mudarse",closing:"Lista para {d}",ready_now:"Disponible ahora",dropped:"▼ Bajó de precio {x}",was:"antes {x}",
-copy:"Copiar esta lista para enviar",copied:"Lista copiada",share:"Copiar enlace a estos resultados",shared:"Enlace copiado",est:"(estimado)",lowtax:"Impuestos bajos",lowtax_tip:"Impuesto a la propiedad estimado de {x}, menor que el típico {z}",restart:"Empezar de nuevo",
+copy:"Copiar esta lista para enviar",copied:"Lista copiada",share:"Copiar enlace a estos resultados",shared:"Enlace copiado",est:"(estimado)",incent_to:"{t} ahora hasta el {d}",lowtax:"Impuestos bajos",lowtax_tip:"Impuesto a la propiedad estimado de {x}, menor que el típico {z}",restart:"Empezar de nuevo",
 nomatch_h:"Ninguna casa cumple todo eso. Pruebe una de estas opciones:",more_opt_h:"¿Quiere ver más opciones?",
 sg_area:"Buscar en todo Texas",sg_beds:"Permitir cualquier número de recámaras",sg_sqft:"Permitir cualquier tamaño",sg_when:"Permitir cualquier fecha de mudanza",sg_budget:"Subir el presupuesto un 10% aprox. ({x})",sg_loan:"Ver pagos con un préstamo {l}",sg_drops:"Incluir casas sin baja de precio",
 signup_h:"Reciba cada semana el inventario nuevo e incentivos por correo",signup_btn:"Registrarse (30 segundos)",
@@ -266,7 +266,7 @@ by_comm:"לפי שכונה",all_homes:"כל הבתים",sort:"מיון:",s_pay:"
 comm_match:"בית אחד תואם|{n} בתים תואמים",more_homes:"הצג בית נוסף אחד|הצג עוד {n} בתים",more_comm:"הצג עוד {n} שכונות (עוד {m} לא מוצגות)",show40:"הצג עוד 40",
 facts:"{bd} חד׳ שינה · {ba} חד׳ רחצה · {sf} רגל רבוע · {fl} · {plan}",story:"קומה אחת|{n} קומות",per_mo:" לחודש",taxins:"כ-{x} לחודש מס וביטוח",
 view_map:"לצפייה בשכונה",ready_tag:"מוכן לכניסה",closing:"מוכן עד {d}",ready_now:"מוכן עכשיו",dropped:"▼ המחיר ירד ב-{x}",was:"היה {x}",
-copy:"העתק רשימה זו לשליחה",copied:"הרשימה הועתקה",share:"העתק קישור לתוצאות אלה",shared:"הקישור הועתק",est:"(משוער)",lowtax:"מס נכס נמוך",lowtax_tip:"מס נכס משוער {x}, נמוך מהמקובל {z}",restart:"התחל מחדש",
+copy:"העתק רשימה זו לשליחה",copied:"הרשימה הועתקה",share:"העתק קישור לתוצאות אלה",shared:"הקישור הועתק",est:"(משוער)",incent_to:"{t} עד {d}",lowtax:"מס נכס נמוך",lowtax_tip:"מס נכס משוער {x}, נמוך מהמקובל {z}",restart:"התחל מחדש",
 nomatch_h:"אין בתים שמתאימים לכל זה. נסה אחת מהאפשרויות:",more_opt_h:"רוצה לראות עוד אפשרויות?",
 sg_area:"חפש בכל טקסס",sg_beds:"אפשר כל מספר חדרי שינה",sg_sqft:"אפשר כל גודל",sg_when:"אפשר כל מועד כניסה",sg_budget:"העלה את התקציב בכ-10% ({x})",sg_loan:"הצג תשלומים להלוואת {l}",sg_drops:"הצג גם בתים ללא הורדת מחיר",
 signup_h:"קבל מדי שבוע מלאי חדש והטבות במייל",signup_btn:"הרשמה (30 שניות)",
@@ -357,7 +357,19 @@ function toast(msg){const e=$("#toast");e.textContent=msg;e.hidden=false;clearTi
 function progress(n){return '<div class="progress" aria-hidden="true">'+[1,2,3,4].map(i=>'<i class="'+(i<=n?'on':'')+'"></i>').join("")+'</div>';}
 function go(n){S.step=n;render();window.scrollTo({top:0});}
 const arrow=()=>isRTL()?"&larr;":"&rarr;";
-const incentBar=()=>{if(!DATA||!DATA.incent)return'';const items=DATA.incent.split(/\s+[-–—]\s+/).map(x=>x.trim()).filter(Boolean);return '<div class="incent"><b class="ih">'+esc(t("incent"))+'</b><ul>'+items.map(x=>'<li>'+esc(x)+'</li>').join("")+'</ul></div>';};
+const incentBar=()=>{
+  if(!DATA||!DATA.incent)return'';
+  let items=DATA.incent.split(/\s+[-–—]\s+/).map(x=>x.trim()).filter(Boolean), title=t("incent");
+  const re=/^(?:good\s+)?(?:through|thru|until|till|ends?)\s+(\d{1,2})\/(\d{1,2})(?:\/(\d{2,4}))?\.?$/i;
+  const k=items.findIndex(x=>re.test(x));
+  if(k>=0){
+    const m=items[k].match(re); let y=m[3]?+m[3]:new Date().getFullYear(); if(y<100)y+=2000;
+    let d=new Date(y,+m[1]-1,+m[2]); if(!m[3]&&d<new Date(Date.now()-180*864e5))d=new Date(y+1,+m[1]-1,+m[2]);
+    title=t("incent_to",{t:t("incent"),d:new Intl.DateTimeFormat(LOCALE[LANG],{month:"short",day:"numeric"}).format(d)});
+    items.splice(k,1);
+  }
+  return '<div class="incent"><b class="ih">'+esc(title)+'</b>'+(items.length?'<ul>'+items.map(x=>'<li>'+esc(x)+'</li>').join("")+'</ul>':'')+'</div>';
+};
 const dropTotal=()=>H.filter(h=>h.df).length;
 
 /* ---------- screens ---------- */
