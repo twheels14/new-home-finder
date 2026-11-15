@@ -296,7 +296,7 @@ function payment(h,L){
   const mi=l.d>=.2?0:l.mi;
   return Math.round(pi + h.price*h.tax*HS/12 + h.price*HOI/12 + base*mi/12 + C[h.c].sa/12);
 }
-const AREADEF=[["saW","g_sa"],["saS","g_sa"],["saE","g_sa"],["saO","g_sa"],["nb","g_bey"],["south","g_bey"],["hill","g_bey"],["austin","g_bey"],["central","g_bey"],["corpus","g_bey"],["lubbock","g_bey"]];
+const AREADEF=[["saW","g_sa"],["saS","g_sa"],["saE","g_sa"],["saO","g_sa"],["nb","g_bey"],["south","g_bey"],["hill","g_bey"],["austin","g_bey"],["central","g_bey"]];
 function initData(d){
   DATA=d;
   C=d.c.map((a,i)=>({i,name:a[0],city:a[1],reg:a[2],lat:a[3],lon:a[4],sa:a[5],n:0}));
