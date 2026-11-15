@@ -102,6 +102,8 @@ h2{font-size:clamp(26px,5vw,34px);line-height:1.15;margin:4px 0 8px;font-weight:
 .toolbar select{border:2px solid var(--line);background:var(--surface);border-radius:12px;min-height:48px;padding:0 12px;font-size:16px;font-weight:700}
 .comm{margin:0 0 16px;overflow:hidden}
 .comm header{padding:16px 18px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;background:var(--teal-soft);border-bottom:1px solid var(--line)}
+.tag.usda{background:#DCEBFA;color:#0F4C81;font-size:13px;white-space:nowrap}
+.tag.usda.chk{background:#ECECEC;color:#555}
 .tag.low{background:#FFE4C7;color:#8A4300;font-size:13px;vertical-align:middle;white-space:nowrap}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tag.low{background:#4A2E14;color:#FFC48A}}
 :root[data-theme="dark"] .tag.low{background:#4A2E14;color:#FFC48A}
@@ -190,7 +192,7 @@ by_comm:"By community",all_homes:"All homes",sort:"Sort:",s_pay:"Lowest payment"
 comm_match:"{n} home matches|{n} homes match",more_homes:"Show {n} more home|Show {n} more homes",more_comm:"Show {n} more communities ({m} not shown yet)",show40:"Show 40 more",
 facts:"{bd} bd · {ba} ba · {sf} sq ft · {fl} · {plan}",story:"1 story|{n} stories",per_mo:"/mo",taxins:"about {x}/mo tax & insurance",
 view_map:"View community",ready_tag:"Move-in ready",closing:"Ready by {d}",ready_now:"Ready now",dropped:"▼ Price dropped {x}",was:"was {x}",
-copy:"Copy this list to send",copied:"List copied",share:"Copy link to these results",shared:"Link copied",est:"(estimated)",incent_to:"{t} now to {d}",lowtax:"Low tax rate",lowtax_tip:"Estimated property tax {x}, below the typical {z}",restart:"Start over",
+usda_tag:"USDA area",usda_chk:"USDA: verify",usda_tip:"This community appears to be in an area USDA lists as eligible. Confirm with a lender.",usda_chk_tip:"Some of this community may fall inside USDA's eligible area. Confirm the exact address with a lender.",usda_note:"USDA loans are limited to eligible areas and to household income limits. Area tags are based on each community's location on USDA's map and are not a determination. Confirm with a lender.",copy:"Copy this list to send",copied:"List copied",share:"Copy link to these results",shared:"Link copied",est:"(estimated)",incent_to:"{t} now to {d}",lowtax:"Low tax rate",lowtax_tip:"Estimated property tax {x}, below the typical {z}",restart:"Start over",
 nomatch_h:"No homes fit all of that. Try one of these:",more_opt_h:"Want to see more options?",
 sg_area:"Look anywhere in Texas",sg_beds:"Allow any number of bedrooms",sg_sqft:"Allow any size",sg_when:"Allow any move-in date",sg_budget:"Raise the budget by about 10% ({x})",sg_loan:"See payments as a {l} loan",sg_drops:"Include homes without price drops",
 signup_h:"Get new inventory and incentives by email each week",signup_btn:"Sign up (30 seconds)",
@@ -228,7 +230,7 @@ by_comm:"Por comunidad",all_homes:"Todas las casas",sort:"Ordenar:",s_pay:"Pago 
 comm_match:"{n} casa coincide|{n} casas coinciden",more_homes:"Mostrar {n} casa más|Mostrar {n} casas más",more_comm:"Mostrar {n} comunidades más ({m} aún sin mostrar)",show40:"Mostrar 40 más",
 facts:"{bd} rec · {ba} baños · {sf} pies² · {fl} · {plan}",story:"1 piso|{n} pisos",per_mo:"/mes",taxins:"aprox. {x}/mes en impuestos y seguro",
 view_map:"Ver comunidad",ready_tag:"Lista para mudarse",closing:"Lista para {d}",ready_now:"Disponible ahora",dropped:"▼ Bajó de precio {x}",was:"antes {x}",
-copy:"Copiar esta lista para enviar",copied:"Lista copiada",share:"Copiar enlace a estos resultados",shared:"Enlace copiado",est:"(estimado)",incent_to:"{t} ahora hasta el {d}",lowtax:"Impuestos bajos",lowtax_tip:"Impuesto a la propiedad estimado de {x}, menor que el típico {z}",restart:"Empezar de nuevo",
+usda_tag:"Zona USDA",usda_chk:"USDA: verificar",usda_tip:"Esta comunidad parece estar en una zona que USDA considera elegible. Confirme con un prestamista.",usda_chk_tip:"Parte de esta comunidad podría estar en la zona elegible de USDA. Confirme la dirección exacta con un prestamista.",usda_note:"Los préstamos USDA se limitan a zonas elegibles y a límites de ingresos del hogar. Las etiquetas de zona se basan en la ubicación de cada comunidad en el mapa de USDA y no son una determinación. Confirme con un prestamista.",copy:"Copiar esta lista para enviar",copied:"Lista copiada",share:"Copiar enlace a estos resultados",shared:"Enlace copiado",est:"(estimado)",incent_to:"{t} ahora hasta el {d}",lowtax:"Impuestos bajos",lowtax_tip:"Impuesto a la propiedad estimado de {x}, menor que el típico {z}",restart:"Empezar de nuevo",
 nomatch_h:"Ninguna casa cumple todo eso. Pruebe una de estas opciones:",more_opt_h:"¿Quiere ver más opciones?",
 sg_area:"Buscar en todo Texas",sg_beds:"Permitir cualquier número de recámaras",sg_sqft:"Permitir cualquier tamaño",sg_when:"Permitir cualquier fecha de mudanza",sg_budget:"Subir el presupuesto un 10% aprox. ({x})",sg_loan:"Ver pagos con un préstamo {l}",sg_drops:"Incluir casas sin baja de precio",
 signup_h:"Reciba cada semana el inventario nuevo e incentivos por correo",signup_btn:"Registrarse (30 segundos)",
@@ -266,7 +268,7 @@ by_comm:"לפי שכונה",all_homes:"כל הבתים",sort:"מיון:",s_pay:"
 comm_match:"בית אחד תואם|{n} בתים תואמים",more_homes:"הצג בית נוסף אחד|הצג עוד {n} בתים",more_comm:"הצג עוד {n} שכונות (עוד {m} לא מוצגות)",show40:"הצג עוד 40",
 facts:"{bd} חד׳ שינה · {ba} חד׳ רחצה · {sf} רגל רבוע · {fl} · {plan}",story:"קומה אחת|{n} קומות",per_mo:" לחודש",taxins:"כ-{x} לחודש מס וביטוח",
 view_map:"לצפייה בשכונה",ready_tag:"מוכן לכניסה",closing:"מוכן עד {d}",ready_now:"מוכן עכשיו",dropped:"▼ המחיר ירד ב-{x}",was:"היה {x}",
-copy:"העתק רשימה זו לשליחה",copied:"הרשימה הועתקה",share:"העתק קישור לתוצאות אלה",shared:"הקישור הועתק",est:"(משוער)",incent_to:"{t} עד {d}",lowtax:"מס נכס נמוך",lowtax_tip:"מס נכס משוער {x}, נמוך מהמקובל {z}",restart:"התחל מחדש",
+usda_tag:"אזור USDA",usda_chk:"USDA: לבדוק",usda_tip:"נראה שהקהילה נמצאת באזור ש-USDA מגדיר כזכאי. יש לאמת מול מלווה.",usda_chk_tip:"ייתכן שחלק מהקהילה נמצא באזור הזכאי של USDA. יש לאמת את הכתובת המדויקת מול מלווה.",usda_note:"הלוואות USDA מוגבלות לאזורים זכאים ולמגבלות הכנסה של משק הבית. תוויות האזור מבוססות על מיקום הקהילה במפת USDA ואינן קביעה רשמית. יש לאמת מול מלווה.",copy:"העתק רשימה זו לשליחה",copied:"הרשימה הועתקה",share:"העתק קישור לתוצאות אלה",shared:"הקישור הועתק",est:"(משוער)",incent_to:"{t} עד {d}",lowtax:"מס נכס נמוך",lowtax_tip:"מס נכס משוער {x}, נמוך מהמקובל {z}",restart:"התחל מחדש",
 nomatch_h:"אין בתים שמתאימים לכל זה. נסה אחת מהאפשרויות:",more_opt_h:"רוצה לראות עוד אפשרויות?",
 sg_area:"חפש בכל טקסס",sg_beds:"אפשר כל מספר חדרי שינה",sg_sqft:"אפשר כל גודל",sg_when:"אפשר כל מועד כניסה",sg_budget:"העלה את התקציב בכ-10% ({x})",sg_loan:"הצג תשלומים להלוואת {l}",sg_drops:"הצג גם בתים ללא הורדת מחיר",
 signup_h:"קבל מדי שבוע מלאי חדש והטבות במייל",signup_btn:"הרשמה (30 שניות)",
@@ -311,7 +313,11 @@ function payment(h,L){
 }
 const AREADEF=[["saO","g_sa"],["saS","g_sa"],["saE","g_sa"],["saW","g_sa"],["conv","g_bey"],["hill","g_bey"],["sanmarcos","g_bey"],["nb","g_bey"],["austin","g_bey"],["gaustin","g_bey"],["south","g_bey"],["central","g_bey"]];
 let TYPTAX=0.0237;
+const USDA={"Flint Ridge":1,"Friendship Oaks":1,"Gatehouse":1,"Juniper Ranch":1,"Morgan Heights":1,"Parkside":1,"Pradera":1,"Rancho Del Cielo":1,"Red Hawk Landing":1,"Steelwood Trails":1,"Voss Farms":1,"Bertram Oaks":2,"Cool Water at Sonterra":2,"Cotton Gateway":2,"Enclave at Horizon Pointe":2,"Flora Meadows":2,"Grace Gardens":2,"Grace Valley":2,"Higdon Crossing":2,"Kyndwood":2,"Lively Ranch":2,"Morgan Meadows":2,"Navarro Ranch":2,"Pleasanton Meadows":2,"Plum Creek North":2,"River Bridge Ranch":2,"Rose Valley":2,"Ruby Crossing":2,"Sapphire Grove":2,"Sky Ranch":2,"Smiley Ranch":2,"Stone Garden":2,"Summerside":2,"Sunshine Trails":2,"The Ridge at Knob Creek":2,"Thunder Rock":2,"Valle Sol":2,"Windridge":2};
+const usdaTag=c=>{const u=USDA[c.name];return u===1?'<span class="tag usda" title="'+esc(t("usda_tip"))+'">'+esc(t("usda_tag"))+'</span>':(u===2&&S.loan==="USDA"&&!S.cash)?'<span class="tag usda chk" title="'+esc(t("usda_chk_tip"))+'">'+esc(t("usda_chk"))+'</span>':'';};
+const usdaNote=()=>S.loan==="USDA"&&!S.cash?' '+t("usda_note"):'';
 const lowTag=c=>c.low?'<span class="tag low" title="'+esc(t("lowtax_tip",{x:(c.eff*100).toFixed(2)+"%",y:"",z:(TYPTAX*100).toFixed(2)+"%"}))+'">'+esc(t("lowtax"))+'</span>':'';
+const ctags=c=>usdaTag(c)+lowTag(c);
 function initData(d){
   DATA=d;
   C=d.c.map((a,i)=>({i,name:a[0],city:a[1],reg:a[2],lat:a[3],lon:a[4],sa:a[5],n:0}));
@@ -335,6 +341,7 @@ const TODAY=(()=>{const d=new Date();return d.getFullYear()*10000+(d.getMonth()+
 function addMonths(n){const d=new Date();d.setMonth(d.getMonth()+n);return d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate();}
 function matches(h,skip){
   skip=skip||{};
+  if(S.loan==="USDA"&&!S.cash&&!USDA[C[h.c].name])return false;
   if(!skip.area && S.sel.size && !S.sel.has(h.c))return false;
   if(!skip.budget && S.budget){ if(S.mode==="pay"&&!S.cash){ if(h.p[S.loan]>S.budget)return false; } else if(h.price>S.budget)return false; }
   if(!skip.beds && S.beds && h.bd<S.beds)return false;
@@ -387,7 +394,7 @@ function footer(){
   const disc=(S.step===2||S.step===5);
   const L=LOANS[S.loan];
   return '<div class="contact"><b>'+esc(t("contact_h"))+'</b><br>'+CONTACT.name+', '+esc(t("title"))+'<br><a href="tel:+18307437270" dir="ltr">'+CONTACT.phone+'</a> &middot; <a href="mailto:'+CONTACT.email+'" dir="ltr">'+CONTACT.email+'</a><br><a class="btn primary tour" href="sms:+18307437270?&body='+encodeURIComponent(t("sms_body"))+'">'+esc(t("tour_now"))+'</a></div>'+
-   (disc&&S.cash?esc(t("disc_cash",{d:DATA.updated})):disc?esc(t("disc_loan",{l:loanName(S.loan),note:t("l_"+S.loan).replace(/\s*\(.*\)$/,""),r:rateTxt(S.loan),d:DATA.updated})):'');
+   (disc&&S.cash?esc(t("disc_cash",{d:DATA.updated})):disc?esc(t("disc_loan",{l:loanName(S.loan),note:t("l_"+S.loan).replace(/\s*\(.*\)$/,""),r:rateTxt(S.loan),d:DATA.updated})+usdaNote()):'');
 }
 const sheetLink=()=>'<p class="skipsheet"><a href="'+SHEET_URL+'" target="_blank" rel="noopener">'+esc(t("sheet"))+'</a></p>';
 function welcome(app){
@@ -533,14 +540,14 @@ function results(app){
       groups.slice(0,S.commShown).forEach(G=>{
         const pays=G.a.map(x=>x.p[S.loan]),prs=G.a.map(x=>x.price), lim=S.shown[G.c.i]||2, vis=G.a.slice(0,lim);
         const rng=(arr,suffix)=>'<bdi dir="ltr">'+fmt(Math.min(...arr))+(Math.min(...arr)===Math.max(...arr)?'':' &ndash; '+fmt(Math.max(...arr)))+'</bdi>'+(suffix||'');
-        h+='<section class="card comm"><header><div><h3>'+esc(G.c.name)+lowTag(G.c)+'</h3><div class="meta">'+esc(G.c.city)+', TX &middot; '+esc(t("comm_match",{n:G.a.length}))+'</div><a class="clink" href="'+mapsUrl(G.a[0])+'" target="_blank" rel="noopener">'+esc(t("view_map"))+' &#8599;</a></div>'+
+        h+='<section class="card comm"><header><div><h3>'+esc(G.c.name)+ctags(G.c)+'</h3><div class="meta">'+esc(G.c.city)+', TX &middot; '+esc(t("comm_match",{n:G.a.length}))+'</div><a class="clink" href="'+mapsUrl(G.a[0])+'" target="_blank" rel="noopener">'+esc(t("view_map"))+' &#8599;</a></div>'+
            '<div class="rng">'+(S.cash?'':rng(pays,esc(t("per_mo")))+'<br>')+rng(prs)+'</div></header>'+
            vis.map(homeRow).join("")+(G.a.length>lim?'<button class="more" data-more="'+G.c.i+'">'+esc(t("more_homes",{n:G.a.length-lim}))+'</button>':'')+'</section>';
       });
       if(groups.length>S.commShown)h+='<button class="btn ghost" id="moreComm" style="width:100%;margin-bottom:8px">'+esc(t("more_comm",{n:Math.min(6,groups.length-S.commShown),m:groups.length-S.commShown}))+'</button>';
     } else {
       const sorted=list.slice().sort(cmp), vis=sorted.slice(0,S.allShown);
-      h+=vis.map(x=>'<section class="card comm"><header style="padding:10px 18px"><div class="meta"><b style="color:var(--ink)">'+esc(C[x.c].name)+'</b>'+lowTag(C[x.c])+', '+esc(x.city)+' &middot; <a class="clink" href="'+mapsUrl(x)+'" target="_blank" rel="noopener">'+esc(t("view_map"))+' &#8599;</a></div></header>'+homeRow(x)+'</section>').join("");
+      h+=vis.map(x=>'<section class="card comm"><header style="padding:10px 18px"><div class="meta"><b style="color:var(--ink)">'+esc(C[x.c].name)+'</b>'+ctags(C[x.c])+', '+esc(x.city)+' &middot; <a class="clink" href="'+mapsUrl(x)+'" target="_blank" rel="noopener">'+esc(t("view_map"))+' &#8599;</a></div></header>'+homeRow(x)+'</section>').join("");
       if(sorted.length>S.allShown)h+='<button class="btn ghost" id="moreAll" style="width:100%">'+esc(t("show40"))+'</button>';
     }
     h+='<div class="row" style="margin-top:18px"><button class="btn ghost" id="copy">'+esc(t("copy"))+'</button><button class="btn ghost" id="pdf">'+esc(t("pdf"))+'</button><button class="btn ghost" id="share">'+esc(t("share"))+'</button><button class="btn ghost" id="restart">'+esc(t("restart"))+'</button></div>'+sheetLink();
@@ -568,7 +575,7 @@ function printList(list){
   const head=S.cash?t("cp_head_cash",{n:list.length}):t("cp_head_loan",{n:list.length,l:loanName(S.loan)});
   $("#printSheet").innerHTML='<h1>'+esc(t("pdf_title"))+'</h1><p class="pm">'+esc(head)+'</p>'+
    top.map(h=>'<div class="ph"><b>'+esc(h.addr)+'</b>, '+esc(h.city)+' &middot; '+esc(C[h.c].name)+'<br>'+esc(t("facts",{bd:h.bd,ba:h.ba,sf:num(h.sf),fl:t("story",{n:h.fl}).replace("{n}",h.fl),plan:h.plan}))+'<br><b>'+(S.cash?m(h.price)+' &middot; '+esc(t("taxins",{x:fmt(h.p.Cash)})):m(h.p[S.loan])+esc(t("per_mo"))+' &middot; '+m(h.price))+'</b> &middot; '+esc(closingLabel(h.coe))+(h.coe>TODAY?' '+esc(t("est")):'')+(h.df?' &middot; '+esc(t("dropped",{x:fmt(h.df-h.price)})):'')+'</div>').join("")+
-   '<p class="pm">'+esc(t("cp_foot",{name:CONTACT.name,title:t("title"),phone:CONTACT.phone,email:CONTACT.email}))+'</p><p class="pm">'+esc(S.cash?t("disc_cash",{d:DATA.updated}):t("disc_loan",{l:loanName(S.loan),note:t("l_"+S.loan).replace(/\s*\(.*\)$/,""),r:rateTxt(S.loan),d:DATA.updated}))+'</p>';
+   '<p class="pm">'+esc(t("cp_foot",{name:CONTACT.name,title:t("title"),phone:CONTACT.phone,email:CONTACT.email}))+'</p><p class="pm">'+esc(S.cash?t("disc_cash",{d:DATA.updated}):t("disc_loan",{l:loanName(S.loan),note:t("l_"+S.loan).replace(/\s*\(.*\)$/,""),r:rateTxt(S.loan),d:DATA.updated})+usdaNote())+'</p>';
   window.print();
 }
 function copyList(list){
