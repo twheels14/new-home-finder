@@ -85,14 +85,6 @@ h2{font-size:clamp(26px,5vw,34px);line-height:1.15;margin:4px 0 8px;font-weight:
 .loan .opt{min-height:70px}
 .nav{position:sticky;bottom:0;background:var(--bg);padding:14px 0 calc(14px + env(safe-area-inset-bottom,0px));margin-top:24px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;border-top:1px solid var(--line)}
 .nav .grow{flex:1}
-.mapbox{margin-top:16px;padding:14px}
-.mapbtns{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
-.mapbtns .chip{min-height:44px;font-size:15px;padding:0 14px}
-svg.map{display:block;width:100%;max-width:560px;margin:0 auto;border-radius:12px;background:var(--map);touch-action:pan-y;user-select:none;-webkit-user-select:none;direction:ltr}
-svg.map.drawing{touch-action:none;cursor:crosshair}
-.dot{cursor:pointer;stroke:var(--surface);stroke-width:.012}
-.maptip{min-height:48px;margin-top:10px;font-size:16px}
-.cityl{fill:var(--muted);font-family:var(--font);font-weight:700;paint-order:stroke;stroke:var(--map);stroke-width:.03;stroke-linejoin:round;pointer-events:none}
 .sumbar{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
 .sumbar button{border:2px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 14px;font-size:15px;font-weight:700;min-height:40px}
 .sumbar button:hover{border-color:var(--teal)}
@@ -307,7 +299,6 @@ function initData(d){
   H=d.h.map(a=>({c:a[0],coe:a[1],addr:a[2],plan:a[3],fl:a[4],bd:a[5],ba:a[6],sf:a[7],price:a[8],tax:a[9],city:a[10],df:a[11]||0,dd:a[12]||0}));
   H.forEach(h=>{h.p={};for(const k in LOANS)h.p[k]=payment(h,k);C[h.c].n++;});
   AREAS=AREADEF.map(([id,grp])=>{const a={id,grp};a.comms=C.filter(c=>c.reg===id);a.homes=a.comms.reduce((s,c)=>s+c.n,0);return a;}).filter(a=>a.comms.length);
-  jitterPoints();
 }
 function areaDesc(a){
   const by=a.comms.slice().sort((x,y)=>y.n-x.n);
@@ -392,84 +383,15 @@ function qArea(app){
     });
     h+='</div>';
   });
-  h+='<div style="margin-top:22px"><button class="btn ghost" id="mapToggle" style="min-height:52px;font-size:17px">'+esc(S.mapOpen?t("map_hide"):t("map_open"))+'</button></div>';
-  if(S.mapOpen) h+=mapHTML();
   h+='<div class="live" id="live"></div>'+nav(0,t("cont"),true);
   app.innerHTML=h;
   app.querySelectorAll("[data-a]").forEach(b=>b.onclick=()=>{
     const a=AREAS.find(x=>x.id===b.dataset.a), st=areaState(a);
     a.comms.forEach(c=>st===2?S.sel.delete(c.i):S.sel.add(c.i)); qArea(app);
   });
-  $("#mapToggle").onclick=()=>{S.mapOpen=!S.mapOpen;qArea(app);};
-  if(S.mapOpen) wireMap(app);
   const nSel=S.sel.size;
   $("#live").textContent=nSel?t("live_sel",{n:nSel,h:num(H.filter(x=>S.sel.has(x.c)).length)}):t("live_none");
   wireNav(0,2,()=>{S.sel.clear();});
-}
-
-/* map */
-const VIEWS={
-  sa:{k:"v_sa",lon:[-99.15,-97.7],lat:[28.8,30.25]},
-  austin:{k:"v_austin",lon:[-98.5,-96.9],lat:[29.75,31.35]},
-  corpus:{k:"v_corpus",lon:[-98.0,-96.9],lat:[27.6,28.45]},
-  lubbock:{k:"v_lubbock",lon:[-102.4,-101.3],lat:[33.15,33.95]},
-  tx:{k:"v_tx",lon:[-102.5,-96.5],lat:[27.3,34]}
-};
-const KX=0.857;
-const LABELS=[["San Antonio",29.424,-98.494],["New Braunfels",29.703,-98.124],["Seguin",29.569,-97.965],["Austin",30.267,-97.743],["Georgetown",30.633,-97.678],["Kerrville",30.047,-99.14],["Fredericksburg",30.275,-98.872],["San Marcos",29.883,-97.941],["Corpus Christi",27.801,-97.396],["Lubbock",33.578,-101.855],["Killeen",31.117,-97.728],["Temple",31.098,-97.343],["Pleasanton",28.967,-98.477],["Hutto",30.543,-97.547],["Elgin",30.350,-97.370],["Lockhart",29.885,-97.670]];
-function jitterPoints(){
-  const g={};C.forEach(c=>{const k=c.lat.toFixed(3)+","+c.lon.toFixed(3);(g[k]=g[k]||[]).push(c);});
-  Object.values(g).forEach(arr=>arr.forEach((c,i)=>{
-    if(arr.length===1){c.mx=c.lon;c.my=c.lat;return;}
-    const a=2*Math.PI*i/arr.length, r=0.03+0.01*arr.length;
-    c.mx=c.lon+Math.cos(a)*r/KX; c.my=c.lat+Math.sin(a)*r;
-  }));
-}
-function proj(lon,lat){return [lon*KX,-lat];}
-function mapHTML(){
-  const v=VIEWS[S.mapView];
-  let h='<div class="card mapbox"><div class="mapbtns">'+Object.keys(VIEWS).map(k=>'<button class="chip" data-v="'+k+'" aria-pressed="'+(k===S.mapView)+'">'+esc(t(VIEWS[k].k))+'</button>').join("")+
-   '<button class="chip" id="drawBtn" aria-pressed="'+S.draw+'">'+esc(S.draw?t("drawing"):t("draw"))+'</button></div>';
-  const [x0,y1]=proj(v.lon[0],v.lat[0]),[x1,y0]=proj(v.lon[1],v.lat[1]);
-  const W=x1-x0,Hh=y1-y0, dr=Hh*0.0105, fs=Hh*0.022;
-  h+='<svg class="map'+(S.draw?' drawing':'')+'" id="map" viewBox="'+x0+' '+y0+' '+W+' '+Hh+'" style="aspect-ratio:'+W+'/'+Hh+'" role="img" aria-label="'+esc(t("map_aria"))+'">';
-  LABELS.forEach(l=>{ if(l[2]>=v.lon[0]&&l[2]<=v.lon[1]&&l[1]>=v.lat[0]&&l[1]<=v.lat[1]){const [px,py]=proj(l[2],l[1]);h+='<text class="cityl" x="'+(px+dr*1.2)+'" y="'+(py-dr*1.2)+'" font-size="'+fs+'">'+l[0]+'</text>';}});
-  C.forEach(c=>{ if(c.mx<v.lon[0]||c.mx>v.lon[1]||c.my<v.lat[0]||c.my>v.lat[1])return;
-    const [px,py]=proj(c.mx,c.my), on=S.sel.has(c.i), r=dr*(on?1.35:1)*(S.mapView==="tx"?1.5:1);
-    h+='<circle class="dot" data-c="'+c.i+'" cx="'+px+'" cy="'+py+'" r="'+r+'" fill="'+(on?'var(--teal)':'var(--dot)')+'" fill-opacity="'+(on?1:.85)+'"><title>'+esc(c.name)+'</title></circle>';});
-  if(S.circle&&S.circle.view===S.mapView){h+='<circle cx="'+S.circle.x+'" cy="'+S.circle.y+'" r="'+S.circle.r+'" fill="var(--teal)" fill-opacity=".12" stroke="var(--teal)" stroke-width="'+(Hh*.004)+'" stroke-dasharray="'+(Hh*.01)+'"/>';}
-  h+='</svg><div class="maptip" id="tip">'+(S.tip||esc(S.draw?t("tip_draw"):t("tip_tap")))+'</div>';
-  if(S.sel.size)h+='<button class="btn link" id="clearSel" style="min-height:44px">'+esc(t("clear_all"))+'</button>';
-  return h+'</div>';
-}
-function wireMap(app){
-  app.querySelectorAll("[data-v]").forEach(b=>b.onclick=()=>{S.mapView=b.dataset.v;S.circle=null;qArea(app);});
-  $("#drawBtn").onclick=()=>{S.draw=!S.draw;S.tip="";qArea(app);};
-  const cs=$("#clearSel"); if(cs)cs.onclick=()=>{S.sel.clear();S.tip="";S.circle=null;qArea(app);};
-  const svg=$("#map");
-  const pt=e=>{const p=svg.createSVGPoint();p.x=e.clientX;p.y=e.clientY;return p.matrixTransform(svg.getScreenCTM().inverse());};
-  app.querySelectorAll(".dot").forEach(d=>{
-    d.addEventListener("click",()=>{ if(S.draw)return; const i=+d.dataset.c,c=C[i];
-      S.sel.has(i)?S.sel.delete(i):S.sel.add(i);
-      S.tip='<b>'+esc(c.name)+'</b>, '+esc(c.city)+' &middot; '+esc(t("homes_n",{n:c.n}))+' &middot; '+esc(S.sel.has(i)?t("tip_added"):t("tip_removed"));
-      qArea(app);});
-    d.addEventListener("pointerenter",()=>{ if(S.draw)return; const c=C[+d.dataset.c]; $("#tip").innerHTML='<b>'+esc(c.name)+'</b>, '+esc(c.city)+' &middot; '+esc(t("homes_n",{n:c.n}));});
-  });
-  if(!S.draw)return;
-  let start=null,circ=null;
-  svg.addEventListener("pointerdown",e=>{start=pt(e);svg.setPointerCapture(e.pointerId);
-    circ=document.createElementNS("http://www.w3.org/2000/svg","circle");circ.setAttribute("fill","var(--teal)");circ.setAttribute("fill-opacity",".15");circ.setAttribute("stroke","var(--teal)");
-    circ.setAttribute("stroke-width",svg.viewBox.baseVal.height*.004);circ.setAttribute("cx",start.x);circ.setAttribute("cy",start.y);circ.setAttribute("r",0);svg.appendChild(circ);e.preventDefault();});
-  svg.addEventListener("pointermove",e=>{if(!start)return;const p=pt(e);circ.setAttribute("r",Math.hypot(p.x-start.x,p.y-start.y));});
-  const end=e=>{ if(!start)return; const p=pt(e), r=Math.hypot(p.x-start.x,p.y-start.y); const s0=start; start=null;
-    if(r<svg.viewBox.baseVal.height*.01){circ&&circ.remove();return;}
-    const v=VIEWS[S.mapView]; let added=0;
-    C.forEach(c=>{ if(c.mx<v.lon[0]||c.mx>v.lon[1]||c.my<v.lat[0]||c.my>v.lat[1])return;
-      const [px,py]=proj(c.mx,c.my); if(Math.hypot(px-s0.x,py-s0.y)<=r && !S.sel.has(c.i)){S.sel.add(c.i);added++;}});
-    S.circle={view:S.mapView,x:s0.x,y:s0.y,r};
-    S.draw=false; S.tip='<b>'+esc(t("tip_circle",{n:added}))+'</b> '+esc(t("tip_circle2"));
-    qArea(app);};
-  svg.addEventListener("pointerup",end);svg.addEventListener("pointercancel",()=>{start=null;circ&&circ.remove();});
 }
 
 /* Q2 */
