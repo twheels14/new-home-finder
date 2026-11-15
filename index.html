@@ -360,11 +360,14 @@ const arrow=()=>isRTL()?"&larr;":"&rarr;";
 const incentBar=()=>{
   if(!DATA||!DATA.incent)return'';
   let items=DATA.incent.split(/\s+[-–—]\s+/).map(x=>x.trim()).filter(Boolean), title=t("incent");
-  const re=/^(?:good\s+)?(?:through|thru|until|till|ends?)\s+(\d{1,2})\/(\d{1,2})(?:\/(\d{2,4}))?\.?$/i;
+  const MON="jan feb mar apr may jun jul aug sep oct nov dec".split(" ");
+  const re=/^(?:(?:good|now|valid|available)\s+)*(?:through|thru|until|till|ends?|to)\s+(?:(\d{1,2})\/(\d{1,2})(?:\/(\d{2,4}))?|([a-z]{3,9})\.?\s+(\d{1,2})(?:st|nd|rd|th)?(?:,?\s+(\d{4}))?)\.?$/i;
   const k=items.findIndex(x=>re.test(x));
   if(k>=0){
-    const m=items[k].match(re); let y=m[3]?+m[3]:new Date().getFullYear(); if(y<100)y+=2000;
-    let d=new Date(y,+m[1]-1,+m[2]); if(!m[3]&&d<new Date(Date.now()-180*864e5))d=new Date(y+1,+m[1]-1,+m[2]);
+    const m=items[k].match(re); let mo,dy,yr;
+    if(m[1]){mo=+m[1]-1;dy=+m[2];yr=m[3]?+m[3]:0;if(yr&&yr<100)yr+=2000;}else{mo=MON.indexOf(m[4].slice(0,3).toLowerCase());dy=+m[5];yr=m[6]?+m[6]:0;}
+    if(mo<0){mo=0;}
+    let y=yr||new Date().getFullYear(); let d=new Date(y,mo,dy); if(!yr&&d<new Date(Date.now()-180*864e5))d=new Date(y+1,mo,dy);
     title=t("incent_to",{t:t("incent"),d:new Intl.DateTimeFormat(LOCALE[LANG],{month:"short",day:"numeric"}).format(d)});
     items.splice(k,1);
   }
