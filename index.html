@@ -172,7 +172,7 @@ alot:"That is a lot of homes, so the best matches are shown first. Tap a button 
 by_comm:"By community",all_homes:"All homes",sort:"Sort:",s_pay:"Lowest payment",s_price:"Lowest price",s_soon:"Soonest move-in",s_size:"Largest first",drops_only:"Price drops only ({n})",
 comm_match:"{n} home matches|{n} homes match",more_homes:"Show {n} more home|Show {n} more homes",more_comm:"Show {n} more communities ({m} not shown yet)",show40:"Show 40 more",
 facts:"{bd} bd · {ba} ba · {sf} sq ft · {fl} · {plan}",story:"1 story|{n} stories",per_mo:"/mo",taxins:"about {x}/mo tax & insurance",
-view_map:"View on map",ready_tag:"Move-in ready",closing:"Closing {d}",ready_now:"Ready now",dropped:"▼ Price dropped {x}",was:"was {x}",
+view_map:"View community on map",ready_tag:"Move-in ready",closing:"Closing {d}",ready_now:"Ready now",dropped:"▼ Price dropped {x}",was:"was {x}",
 copy:"Copy this list to send",copied:"List copied",restart:"Start over",
 nomatch_h:"No homes fit all of that. Try one of these:",more_opt_h:"Want to see more options?",
 sg_area:"Look anywhere in Texas",sg_beds:"Allow any number of bedrooms",sg_sqft:"Allow any size",sg_when:"Allow any move-in date",sg_budget:"Raise the budget by about 10% ({x})",sg_loan:"See payments as a {l} loan",sg_drops:"Include homes without price drops",
@@ -210,7 +210,7 @@ alot:"Son muchas casas, por eso se muestran primero las mejores coincidencias. T
 by_comm:"Por comunidad",all_homes:"Todas las casas",sort:"Ordenar:",s_pay:"Pago más bajo",s_price:"Precio más bajo",s_soon:"Mudanza más pronta",s_size:"Más grandes primero",drops_only:"Solo bajas de precio ({n})",
 comm_match:"{n} casa coincide|{n} casas coinciden",more_homes:"Mostrar {n} casa más|Mostrar {n} casas más",more_comm:"Mostrar {n} comunidades más ({m} aún sin mostrar)",show40:"Mostrar 40 más",
 facts:"{bd} rec · {ba} baños · {sf} pies² · {fl} · {plan}",story:"1 piso|{n} pisos",per_mo:"/mes",taxins:"aprox. {x}/mes en impuestos y seguro",
-view_map:"Ver en el mapa",ready_tag:"Lista para mudarse",closing:"Cierre {d}",ready_now:"Disponible ahora",dropped:"▼ Bajó de precio {x}",was:"antes {x}",
+view_map:"Ver la comunidad en el mapa",ready_tag:"Lista para mudarse",closing:"Cierre {d}",ready_now:"Disponible ahora",dropped:"▼ Bajó de precio {x}",was:"antes {x}",
 copy:"Copiar esta lista para enviar",copied:"Lista copiada",restart:"Empezar de nuevo",
 nomatch_h:"Ninguna casa cumple todo eso. Pruebe una de estas opciones:",more_opt_h:"¿Quiere ver más opciones?",
 sg_area:"Buscar en todo Texas",sg_beds:"Permitir cualquier número de recámaras",sg_sqft:"Permitir cualquier tamaño",sg_when:"Permitir cualquier fecha de mudanza",sg_budget:"Subir el presupuesto un 10% aprox. ({x})",sg_loan:"Ver pagos con un préstamo {l}",sg_drops:"Incluir casas sin baja de precio",
@@ -248,7 +248,7 @@ alot:"יש הרבה בתים, ולכן ההתאמות הטובות ביותר מ
 by_comm:"לפי שכונה",all_homes:"כל הבתים",sort:"מיון:",s_pay:"התשלום הנמוך ביותר",s_price:"המחיר הנמוך ביותר",s_soon:"כניסה הקרובה ביותר",s_size:"הגדולים ראשונים",drops_only:"הורדות מחיר בלבד ({n})",
 comm_match:"בית אחד תואם|{n} בתים תואמים",more_homes:"הצג בית נוסף אחד|הצג עוד {n} בתים",more_comm:"הצג עוד {n} שכונות (עוד {m} לא מוצגות)",show40:"הצג עוד 40",
 facts:"{bd} חד׳ שינה · {ba} חד׳ רחצה · {sf} רגל רבוע · {fl} · {plan}",story:"קומה אחת|{n} קומות",per_mo:" לחודש",taxins:"כ-{x} לחודש מס וביטוח",
-view_map:"הצג במפה",ready_tag:"מוכן לכניסה",closing:"סגירה {d}",ready_now:"מוכן עכשיו",dropped:"▼ המחיר ירד ב-{x}",was:"היה {x}",
+view_map:"הצג את השכונה במפה",ready_tag:"מוכן לכניסה",closing:"סגירה {d}",ready_now:"מוכן עכשיו",dropped:"▼ המחיר ירד ב-{x}",was:"היה {x}",
 copy:"העתק רשימה זו לשליחה",copied:"הרשימה הועתקה",restart:"התחל מחדש",
 nomatch_h:"אין בתים שמתאימים לכל זה. נסה אחת מהאפשרויות:",more_opt_h:"רוצה לראות עוד אפשרויות?",
 sg_area:"חפש בכל טקסס",sg_beds:"אפשר כל מספר חדרי שינה",sg_sqft:"אפשר כל גודל",sg_when:"אפשר כל מועד כניסה",sg_budget:"העלה את התקציב בכ-10% ({x})",sg_loan:"הצג תשלומים להלוואת {l}",sg_drops:"הצג גם בתים ללא הורדת מחיר",
@@ -327,7 +327,7 @@ const fmt=n=>"$"+Math.round(n).toLocaleString("en-US");
 const m=n=>'<bdi dir="ltr">'+fmt(n)+'</bdi>';
 const num=n=>Number(n).toLocaleString("en-US");
 function closingLabel(coe){ if(coe<=TODAY)return t("ready_now"); const y=Math.floor(coe/10000),mo=Math.floor(coe/100)%100; return t("closing",{d:new Intl.DateTimeFormat(LOCALE[LANG],{month:"short",year:"numeric"}).format(new Date(y,mo-1,1))}); }
-function mapsUrl(h){return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(h.addr+", "+h.city+", TX");}
+function mapsUrl(h){return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent("Lennar at "+C[h.c].name+", "+h.city+", TX");}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
 function toast(msg){const e=$("#toast");e.textContent=msg;e.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(()=>e.hidden=true,2400);}
 function progress(n){return '<div class="progress" aria-hidden="true">'+[1,2,3,4].map(i=>'<i class="'+(i<=n?'on':'')+'"></i>').join("")+'</div>';}
