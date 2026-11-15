@@ -9,17 +9,17 @@
 :root{
   --bg:#F3F5F8; --surface:#FFFFFF; --ink:#1F2B3D; --muted:#5A6678; --line:#D8DEE7;
   --navy:#1B2A49; --navy-ink:#F4F7FB; --teal:#0E7C86; --teal-soft:#E1F1F2; --teal-ink:#0A5F67;
-  --gold:#FFF1CC; --gold-line:#E4C877; --gold-ink:#5C4400; --good:#1C6B3A; --good-soft:#DDF0E3; --drop:#B32620; --drop-soft:#FCE4E2; --map:#E9EEF4; --dot:#41557D;
+  --gold:#FFF1CC; --gold-line:#E4C877; --gold-ink:#5C4400; --good:#1C6B3A; --pay:#1D7A4A; --good-soft:#DDF0E3; --drop:#B32620; --drop-soft:#FCE4E2; --map:#E9EEF4; --dot:#41557D;
   --font:'Lato','Segoe UI','Arial Hebrew',Arial,system-ui,-apple-system,sans-serif;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#111926; --surface:#1A2536; --ink:#E7ECF3; --muted:#9BA8BB; --line:#2E3C52;
   --navy:#2A4272; --navy-ink:#F4F7FB; --teal:#58C4CD; --teal-soft:#16343C; --teal-ink:#8EDCE3;
-  --gold:#3A3217; --gold-line:#8C7A33; --gold-ink:#F3DD9B; --good:#7FD39B; --good-soft:#1B3A29; --drop:#FF9A92; --drop-soft:#4A2320; --map:#1F2B3E; --dot:#8FA6D1; color-scheme:dark}}
+  --gold:#3A3217; --gold-line:#8C7A33; --gold-ink:#F3DD9B; --good:#7FD39B; --pay:#6FD6A0; --good-soft:#1B3A29; --drop:#FF9A92; --drop-soft:#4A2320; --map:#1F2B3E; --dot:#8FA6D1; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#111926; --surface:#1A2536; --ink:#E7ECF3; --muted:#9BA8BB; --line:#2E3C52;
   --navy:#2A4272; --navy-ink:#F4F7FB; --teal:#58C4CD; --teal-soft:#16343C; --teal-ink:#8EDCE3;
-  --gold:#3A3217; --gold-line:#8C7A33; --gold-ink:#F3DD9B; --good:#7FD39B; --good-soft:#1B3A29; --drop:#FF9A92; --drop-soft:#4A2320; --map:#1F2B3E; --dot:#8FA6D1; color-scheme:dark}
+  --gold:#3A3217; --gold-line:#8C7A33; --gold-ink:#F3DD9B; --good:#7FD39B; --pay:#6FD6A0; --good-soft:#1B3A29; --drop:#FF9A92; --drop-soft:#4A2320; --map:#1F2B3E; --dot:#8FA6D1; color-scheme:dark}
 *{box-sizing:border-box}
 html,body{margin:0}
 body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:18px;line-height:1.45;
@@ -94,6 +94,7 @@ h2{font-size:clamp(26px,5vw,34px);line-height:1.15;margin:4px 0 8px;font-weight:
 .toolbar select{border:2px solid var(--line);background:var(--surface);border-radius:12px;min-height:48px;padding:0 12px;font-size:16px;font-weight:700}
 .comm{margin:0 0 16px;overflow:hidden}
 .comm header{padding:16px 18px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;background:var(--teal-soft);border-bottom:1px solid var(--line)}
+.clink{font-size:15px;font-weight:700;display:inline-block;margin-top:4px}
 .comm h3{margin:0;font-size:21px;font-weight:900}
 .comm .meta{font-size:15px;color:var(--muted)}
 .comm .rng{text-align:end;font-size:15px;color:var(--teal-ink);font-weight:700}
@@ -102,7 +103,7 @@ h2{font-size:clamp(26px,5vw,34px);line-height:1.15;margin:4px 0 8px;font-weight:
 .home .addr{font-weight:900;font-size:18px;direction:ltr;text-align:start}
 html[dir="rtl"] .home .addr{text-align:right}
 .home .facts{font-size:15px;color:var(--muted)}
-.home .pay{font-size:26px;font-weight:900;color:var(--teal-ink);text-align:end;font-variant-numeric:tabular-nums;line-height:1.1}
+.home .pay{font-size:26px;font-weight:900;color:var(--pay);text-align:end;font-variant-numeric:tabular-nums;line-height:1.1}
 .home .pay small{font-size:14px;font-weight:700;color:var(--muted)}
 .home .price{font-size:15px;text-align:end;color:var(--muted);font-variant-numeric:tabular-nums}
 .home .links{grid-column:1/-1;font-size:15px;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
@@ -116,10 +117,13 @@ html[dir="rtl"] .home .addr{text-align:right}
 html[dir="rtl"] .help .btn{margin:4px 0 4px 8px}
 .foot{margin-top:28px;font-size:14px;color:var(--muted);line-height:1.5}
 .foot .contact{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;font-size:16px;color:var(--ink);margin-bottom:14px}
-.foot .contact b{font-size:18px}
+.foot .contact b{font-size:20px}
+.tour{margin-top:12px;min-height:54px;font-size:18px;color:var(--navy-ink)!important}
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(24px + env(safe-area-inset-bottom,0px));background:var(--navy);color:var(--navy-ink);padding:12px 20px;border-radius:12px;font-weight:700;z-index:20}
 .status{padding:30px 6px;font-size:19px;color:var(--muted)}
 @media (max-width:520px){body{font-size:17px}.home{grid-template-columns:1fr}.home .pay,.home .price{text-align:start}.comm .rng{text-align:start}.btn{width:100%}.nav .btn{width:auto;flex:1}.nav .btn.link{flex:0}.hero .btn{width:100%}}
+#printSheet{display:none}
+@media print{body>.wrap,.toast{display:none!important}#printSheet{display:block;color:#000;background:#fff;font-family:Lato,Arial,sans-serif;font-size:12pt}#printSheet h1{font-size:20pt;margin:0 0 6pt}#printSheet .ph{border-top:1px solid #999;padding:7pt 0;break-inside:avoid}#printSheet .pm{font-size:10pt;color:#333}body{background:#fff}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 
@@ -134,6 +138,7 @@ html[dir="rtl"] .help .btn{margin:4px 0 4px 8px}
   <div class="foot" id="foot"></div>
 </div>
 <div class="toast" id="toast" hidden></div>
+<div id="printSheet"></div>
 
 <script>
 /* ---------- settings you may edit ---------- */
@@ -164,7 +169,7 @@ loan_h:"Loan type used for payments",most_common:"(most common)",l_FHA:"3.5% dow
 cash_note:"Each home will show its price, plus an estimate of the monthly property tax and insurance an owner pays.",
 fit:"{n} home fits so far|{n} homes fit so far",
 q3_h:"How much room do you need?",q3_sub:"Choose the fewest bedrooms you can live with.",bedrooms:"Bedrooms",sqft_h:"Square feet",any:"Any",
-q4_h:"When do you need to move in?",q4_sub:"Each home shows an estimated closing date.",asap:"As soon as possible",asap_d:"Closing within about 3 months",m6:"Within 6 months",m12:"Within a year",norush:"No rush",norush_d:"Show everything",
+q4_h:"When do you need to move in?",q4_sub:"Each home shows an estimated ready-by date.",asap:"As soon as possible",asap_d:"Ready within about 3 months",m6:"Within 6 months",m12:"Within a year",norush:"No rush",norush_d:"Show everything",
 fit_end:"{n} home fits|{n} homes fit",
 your_results:"Your results",match:"home matches|homes match",
 c_anywhere:"Anywhere",c_sa:"SA {name}",c_more:" +more",c_comms:"{n} communities",c_cash:"Cash, up to {x}",c_upmo:"Up to {x}/mo",c_up:"Up to {x}",c_anybud:"Any budget",c_paycash:"Paying cash",c_beds:"{n}+ bedrooms",c_anybeds:"Any bedrooms",c_sqft:"{n}+ sq ft",c_move:"Move in within {n} months",c_drops:"Price drops only",
@@ -172,12 +177,12 @@ alot:"That is a lot of homes, so the best matches are shown first. Tap a button 
 by_comm:"By community",all_homes:"All homes",sort:"Sort:",s_pay:"Lowest payment",s_price:"Lowest price",s_soon:"Soonest move-in",s_size:"Largest first",drops_only:"Price drops only ({n})",
 comm_match:"{n} home matches|{n} homes match",more_homes:"Show {n} more home|Show {n} more homes",more_comm:"Show {n} more communities ({m} not shown yet)",show40:"Show 40 more",
 facts:"{bd} bd · {ba} ba · {sf} sq ft · {fl} · {plan}",story:"1 story|{n} stories",per_mo:"/mo",taxins:"about {x}/mo tax & insurance",
-view_map:"View community on map",ready_tag:"Move-in ready",closing:"Closing {d}",ready_now:"Ready now",dropped:"▼ Price dropped {x}",was:"was {x}",
+view_map:"View community",ready_tag:"Move-in ready",closing:"Ready by {d}",ready_now:"Ready now",dropped:"▼ Price dropped {x}",was:"was {x}",
 copy:"Copy this list to send",copied:"List copied",restart:"Start over",
 nomatch_h:"No homes fit all of that. Try one of these:",more_opt_h:"Want to see more options?",
 sg_area:"Look anywhere in Texas",sg_beds:"Allow any number of bedrooms",sg_sqft:"Allow any size",sg_when:"Allow any move-in date",sg_budget:"Raise the budget by about 10% ({x})",sg_loan:"See payments as a {l} loan",sg_drops:"Include homes without price drops",
 signup_h:"Get new inventory and incentives by email each week",signup_btn:"Sign up (30 seconds)",
-contact_h:"Questions, or want to tour a home?",
+contact_h:"Questions?",tour_now:"Tour Now",sms_body:"Hi Trevor, I would like to tour a new home.",pdf:"Save as PDF",pdf_title:"Your new home matches",
 disc_loan:"Payments are estimates for a {l} loan ({note}) at 5.75% interest, 30-year fixed, with property taxes, homeowner insurance and mortgage insurance included. Not a loan offer. Prices and availability change daily. Inventory last updated {d}.",
 disc_cash:"Cash purchase: no loan. The monthly figure is only estimated property tax and homeowner insurance. Estimates only. Prices and availability change daily. Inventory last updated {d}.",
 cp_head_loan:"New homes that match ({n} total, {l} estimate):",cp_head_cash:"New homes that match ({n} total, cash purchase):",cp_line_loan:"{bd} bd, {ba} ba, {sf} sq ft. {price}, about {pay}/mo",cp_line_cash:"{bd} bd, {ba} ba, {sf} sq ft. {price}, about {pay}/mo tax and insurance",cp_foot:"Estimates only. Questions or to tour: {name}, {title}, {phone}, {email}"
@@ -202,7 +207,7 @@ loan_h:"Tipo de préstamo para los pagos",most_common:"(el más común)",l_FHA:"
 cash_note:"Cada casa mostrará su precio y un estimado de los impuestos y el seguro mensuales que paga un propietario.",
 fit:"{n} casa cumple hasta ahora|{n} casas cumplen hasta ahora",
 q3_h:"¿Cuánto espacio necesita?",q3_sub:"Elija el menor número de recámaras con el que pueda vivir.",bedrooms:"Recámaras",sqft_h:"Pies cuadrados",any:"Cualquiera",
-q4_h:"¿Cuándo necesita mudarse?",q4_sub:"Cada casa muestra una fecha estimada de cierre.",asap:"Lo antes posible",asap_d:"Cierre en unos 3 meses",m6:"En 6 meses",m12:"En un año",norush:"Sin prisa",norush_d:"Mostrar todo",
+q4_h:"¿Cuándo necesita mudarse?",q4_sub:"Cada casa muestra una fecha estimada de entrega.",asap:"Lo antes posible",asap_d:"Lista en unos 3 meses",m6:"En 6 meses",m12:"En un año",norush:"Sin prisa",norush_d:"Mostrar todo",
 fit_end:"{n} casa cumple|{n} casas cumplen",
 your_results:"Sus resultados",match:"casa coincide|casas coinciden",
 c_anywhere:"En cualquier lugar",c_sa:"SA {name}",c_more:" y más",c_comms:"{n} comunidades",c_cash:"Efectivo, hasta {x}",c_upmo:"Hasta {x}/mes",c_up:"Hasta {x}",c_anybud:"Cualquier presupuesto",c_paycash:"Pago en efectivo",c_beds:"{n}+ recámaras",c_anybeds:"Cualquier número de recámaras",c_sqft:"{n}+ pies²",c_move:"Mudanza en {n} meses",c_drops:"Solo bajas de precio",
@@ -210,12 +215,12 @@ alot:"Son muchas casas, por eso se muestran primero las mejores coincidencias. T
 by_comm:"Por comunidad",all_homes:"Todas las casas",sort:"Ordenar:",s_pay:"Pago más bajo",s_price:"Precio más bajo",s_soon:"Mudanza más pronta",s_size:"Más grandes primero",drops_only:"Solo bajas de precio ({n})",
 comm_match:"{n} casa coincide|{n} casas coinciden",more_homes:"Mostrar {n} casa más|Mostrar {n} casas más",more_comm:"Mostrar {n} comunidades más ({m} aún sin mostrar)",show40:"Mostrar 40 más",
 facts:"{bd} rec · {ba} baños · {sf} pies² · {fl} · {plan}",story:"1 piso|{n} pisos",per_mo:"/mes",taxins:"aprox. {x}/mes en impuestos y seguro",
-view_map:"Ver la comunidad en el mapa",ready_tag:"Lista para mudarse",closing:"Cierre {d}",ready_now:"Disponible ahora",dropped:"▼ Bajó de precio {x}",was:"antes {x}",
+view_map:"Ver comunidad",ready_tag:"Lista para mudarse",closing:"Lista para {d}",ready_now:"Disponible ahora",dropped:"▼ Bajó de precio {x}",was:"antes {x}",
 copy:"Copiar esta lista para enviar",copied:"Lista copiada",restart:"Empezar de nuevo",
 nomatch_h:"Ninguna casa cumple todo eso. Pruebe una de estas opciones:",more_opt_h:"¿Quiere ver más opciones?",
 sg_area:"Buscar en todo Texas",sg_beds:"Permitir cualquier número de recámaras",sg_sqft:"Permitir cualquier tamaño",sg_when:"Permitir cualquier fecha de mudanza",sg_budget:"Subir el presupuesto un 10% aprox. ({x})",sg_loan:"Ver pagos con un préstamo {l}",sg_drops:"Incluir casas sin baja de precio",
 signup_h:"Reciba cada semana el inventario nuevo e incentivos por correo",signup_btn:"Registrarse (30 segundos)",
-contact_h:"¿Preguntas o desea visitar una casa?",
+contact_h:"¿Preguntas?",tour_now:"Visitar ahora",sms_body:"Hola Trevor, me gustaría visitar una casa nueva.",pdf:"Guardar como PDF",pdf_title:"Casas nuevas que le convienen",
 disc_loan:"Los pagos son estimados para un préstamo {l} ({note}) con 5.75% de interés, tasa fija a 30 años, e incluyen impuestos a la propiedad, seguro del hogar y seguro hipotecario. No es una oferta de préstamo. Los precios y la disponibilidad cambian a diario. Inventario actualizado por última vez: {d}.",
 disc_cash:"Compra en efectivo: sin préstamo. La cifra mensual es solo un estimado de impuestos a la propiedad y seguro del hogar. Solo estimados. Los precios y la disponibilidad cambian a diario. Inventario actualizado por última vez: {d}.",
 cp_head_loan:"Casas nuevas que coinciden ({n} en total, estimado {l}):",cp_head_cash:"Casas nuevas que coinciden ({n} en total, compra en efectivo):",cp_line_loan:"{bd} rec, {ba} baños, {sf} pies². {price}, aprox. {pay}/mes",cp_line_cash:"{bd} rec, {ba} baños, {sf} pies². {price}, aprox. {pay}/mes en impuestos y seguro",cp_foot:"Solo estimados. Preguntas o para visitar: {name}, {title}, {phone}, {email}"
@@ -240,7 +245,7 @@ loan_h:"סוג ההלוואה לחישוב התשלומים",most_common:"(הנ�
 cash_note:"כל בית יוצג עם מחירו ועם הערכה של מס הרכוש והביטוח החודשיים שמשלם בעל הבית.",
 fit:"בית אחד מתאים עד כה|{n} בתים מתאימים עד כה",
 q3_h:"כמה מקום אתה צריך?",q3_sub:"בחר את מספר חדרי השינה המינימלי שמספיק לך.",bedrooms:"חדרי שינה",sqft_h:"רגל רבוע (sq ft)",any:"הכול",
-q4_h:"מתי אתה צריך להכנס?",q4_sub:"לכל בית מוצג תאריך סגירה משוער.",asap:"בהקדם האפשרי",asap_d:"סגירה בתוך כ-3 חודשים",m6:"תוך 6 חודשים",m12:"תוך שנה",norush:"אין לחץ",norush_d:"הצג הכל",
+q4_h:"מתי אתה צריך להכנס?",q4_sub:"לכל בית מוצג תאריך מוכנות משוער.",asap:"בהקדם האפשרי",asap_d:"מוכן בתוך כ-3 חודשים",m6:"תוך 6 חודשים",m12:"תוך שנה",norush:"אין לחץ",norush_d:"הצג הכל",
 fit_end:"בית אחד מתאים|{n} בתים מתאימים",
 your_results:"התוצאות שלך",match:"בית תואם|בתים תואמים",
 c_anywhere:"בכל מקום",c_sa:"סן אנטוניו {name}",c_more:" ועוד",c_comms:"{n} שכונות",c_cash:"מזומן, עד {x}",c_upmo:"עד {x} לחודש",c_up:"עד {x}",c_anybud:"כל תקציב",c_paycash:"תשלום במזומן",c_beds:"{n}+ חדרי שינה",c_anybeds:"כל מספר חדרי שינה",c_sqft:"{n}+ רגל רבוע",c_move:"כניסה תוך {n} חודשים",c_drops:"הורדות מחיר בלבד",
@@ -248,12 +253,12 @@ alot:"יש הרבה בתים, ולכן ההתאמות הטובות ביותר מ
 by_comm:"לפי שכונה",all_homes:"כל הבתים",sort:"מיון:",s_pay:"התשלום הנמוך ביותר",s_price:"המחיר הנמוך ביותר",s_soon:"כניסה הקרובה ביותר",s_size:"הגדולים ראשונים",drops_only:"הורדות מחיר בלבד ({n})",
 comm_match:"בית אחד תואם|{n} בתים תואמים",more_homes:"הצג בית נוסף אחד|הצג עוד {n} בתים",more_comm:"הצג עוד {n} שכונות (עוד {m} לא מוצגות)",show40:"הצג עוד 40",
 facts:"{bd} חד׳ שינה · {ba} חד׳ רחצה · {sf} רגל רבוע · {fl} · {plan}",story:"קומה אחת|{n} קומות",per_mo:" לחודש",taxins:"כ-{x} לחודש מס וביטוח",
-view_map:"הצג את השכונה במפה",ready_tag:"מוכן לכניסה",closing:"סגירה {d}",ready_now:"מוכן עכשיו",dropped:"▼ המחיר ירד ב-{x}",was:"היה {x}",
+view_map:"לצפייה בשכונה",ready_tag:"מוכן לכניסה",closing:"מוכן עד {d}",ready_now:"מוכן עכשיו",dropped:"▼ המחיר ירד ב-{x}",was:"היה {x}",
 copy:"העתק רשימה זו לשליחה",copied:"הרשימה הועתקה",restart:"התחל מחדש",
 nomatch_h:"אין בתים שמתאימים לכל זה. נסה אחת מהאפשרויות:",more_opt_h:"רוצה לראות עוד אפשרויות?",
 sg_area:"חפש בכל טקסס",sg_beds:"אפשר כל מספר חדרי שינה",sg_sqft:"אפשר כל גודל",sg_when:"אפשר כל מועד כניסה",sg_budget:"העלה את התקציב בכ-10% ({x})",sg_loan:"הצג תשלומים להלוואת {l}",sg_drops:"הצג גם בתים ללא הורדת מחיר",
 signup_h:"קבל מדי שבוע מלאי חדש והטבות במייל",signup_btn:"הרשמה (30 שניות)",
-contact_h:"שאלות, או רוצה לסייר בבית?",
+contact_h:"שאלות?",tour_now:"לסיור עכשיו",sms_body:"שלום טרבור, אני מעוניין לסייר בבית חדש.",pdf:"שמירה כ-PDF",pdf_title:"הבתים החדשים שמתאימים לך",
 disc_loan:"התשלומים הם הערכות להלוואת {l} ({note}) בריבית של 5.75%, קבועה ל-30 שנה, וכוללים מס רכוש, ביטוח בית וביטוח משכנתא. אין זו הצעת הלוואה. המחירים והזמינות משתנים מדי יום. המלאי עודכן לאחרונה: {d}.",
 disc_cash:"רכישה במזומן: ללא הלוואה. הסכום החודשי הוא הערכה של מס רכוש וביטוח בית בלבד. הערכות בלבד. המחירים והזמינות משתנים מדי יום. המלאי עודכן לאחרונה: {d}.",
 cp_head_loan:"בתים חדשים שמתאימים ({n} בסה״כ, הערכת {l}):",cp_head_cash:"בתים חדשים שמתאימים ({n} בסה״כ, רכישה במזומן):",cp_line_loan:"{bd} חד׳ שינה, {ba} חד׳ רחצה, {sf} רגל רבוע. {price}, כ-{pay} לחודש",cp_line_cash:"{bd} חד׳ שינה, {ba} חד׳ רחצה, {sf} רגל רבוע. {price}, כ-{pay} לחודש מס וביטוח",cp_foot:"הערכות בלבד. לשאלות או לסיור: {name}, {title}, {phone}, {email}"
@@ -347,7 +352,7 @@ function render(){
 function footer(){
   const disc=(S.step===2||S.step===5);
   const L=LOANS[S.loan];
-  return '<div class="contact"><b>'+esc(t("contact_h"))+'</b><br>'+CONTACT.name+', '+esc(t("title"))+'<br><a href="tel:+18307437270" dir="ltr">'+CONTACT.phone+'</a> &middot; <a href="mailto:'+CONTACT.email+'" dir="ltr">'+CONTACT.email+'</a></div>'+
+  return '<div class="contact"><b>'+esc(t("contact_h"))+'</b><br>'+CONTACT.name+', '+esc(t("title"))+'<br><a href="tel:+18307437270" dir="ltr">'+CONTACT.phone+'</a> &middot; <a href="mailto:'+CONTACT.email+'" dir="ltr">'+CONTACT.email+'</a><br><a class="btn primary tour" href="sms:+18307437270?&body='+encodeURIComponent(t("sms_body"))+'">'+esc(t("tour_now"))+'</a></div>'+
    (disc&&S.cash?esc(t("disc_cash",{d:DATA.updated})):disc?esc(t("disc_loan",{l:loanName(S.loan),note:t("l_"+S.loan),d:DATA.updated})):'');
 }
 const sheetLink=()=>'<p class="skipsheet"><a href="'+SHEET_URL+'" target="_blank" rel="noopener">'+esc(t("sheet"))+'</a></p>';
@@ -450,7 +455,7 @@ function homeRow(h){
   const drop=h.df?'<span class="tag drop">'+esc(t("dropped",{x:fmt(h.df-h.price)}))+'</span> <span class="facts">'+esc(t("was",{x:fmt(h.df)}))+'</span>':'';
   return '<div class="home"><div><div class="addr">'+esc(h.addr)+'</div><div class="facts">'+esc(t("facts",{bd:h.bd,ba:h.ba,sf:num(h.sf),fl:t("story",{n:h.fl}).replace("{n}",h.fl),plan:h.plan}))+'</div></div>'+
    (S.cash?'<div><div class="pay">'+m(h.price)+'</div><div class="price">'+t("taxins",{x:m(h.p.Cash)})+'</div></div>':'<div><div class="pay">'+m(h.p[S.loan])+'<small>'+esc(t("per_mo"))+'</small></div><div class="price">'+m(h.price)+'</div></div>')+
-   '<div class="links">'+(drop||'')+'<span class="facts">'+esc(closingLabel(h.coe))+(h.coe<=TODAY?'<span class="tag">'+esc(t("ready_tag"))+'</span>':'')+'</span><a href="'+mapsUrl(h)+'" target="_blank" rel="noopener">'+esc(t("view_map"))+'</a></div></div>';
+   '<div class="links">'+(drop||'')+'<span class="facts">'+esc(closingLabel(h.coe))+(h.coe<=TODAY?'<span class="tag">'+esc(t("ready_tag"))+'</span>':'')+'</span></div></div>';
 }
 function summaryChips(){
   const full=AREAS.filter(a=>areaState(a)===2);
@@ -494,17 +499,17 @@ function results(app){
       groups.slice(0,S.commShown).forEach(G=>{
         const pays=G.a.map(x=>x.p[S.loan]),prs=G.a.map(x=>x.price), lim=S.shown[G.c.i]||2, vis=G.a.slice(0,lim);
         const rng=(arr,suffix)=>'<bdi dir="ltr">'+fmt(Math.min(...arr))+(Math.min(...arr)===Math.max(...arr)?'':' &ndash; '+fmt(Math.max(...arr)))+'</bdi>'+(suffix||'');
-        h+='<section class="card comm"><header><div><h3>'+esc(G.c.name)+'</h3><div class="meta">'+esc(G.c.city)+', TX &middot; '+esc(t("comm_match",{n:G.a.length}))+'</div></div>'+
+        h+='<section class="card comm"><header><div><h3>'+esc(G.c.name)+'</h3><div class="meta">'+esc(G.c.city)+', TX &middot; '+esc(t("comm_match",{n:G.a.length}))+'</div><a class="clink" href="'+mapsUrl(G.a[0])+'" target="_blank" rel="noopener">'+esc(t("view_map"))+' &#8599;</a></div>'+
            '<div class="rng">'+(S.cash?'':rng(pays,esc(t("per_mo")))+'<br>')+rng(prs)+'</div></header>'+
            vis.map(homeRow).join("")+(G.a.length>lim?'<button class="more" data-more="'+G.c.i+'">'+esc(t("more_homes",{n:G.a.length-lim}))+'</button>':'')+'</section>';
       });
       if(groups.length>S.commShown)h+='<button class="btn ghost" id="moreComm" style="width:100%;margin-bottom:8px">'+esc(t("more_comm",{n:Math.min(6,groups.length-S.commShown),m:groups.length-S.commShown}))+'</button>';
     } else {
       const sorted=list.slice().sort(cmp), vis=sorted.slice(0,S.allShown);
-      h+=vis.map(x=>'<section class="card comm"><header style="padding:10px 18px"><div class="meta"><b style="color:var(--ink)">'+esc(C[x.c].name)+'</b>, '+esc(x.city)+'</div></header>'+homeRow(x)+'</section>').join("");
+      h+=vis.map(x=>'<section class="card comm"><header style="padding:10px 18px"><div class="meta"><b style="color:var(--ink)">'+esc(C[x.c].name)+'</b>, '+esc(x.city)+' &middot; <a class="clink" href="'+mapsUrl(x)+'" target="_blank" rel="noopener">'+esc(t("view_map"))+' &#8599;</a></div></header>'+homeRow(x)+'</section>').join("");
       if(sorted.length>S.allShown)h+='<button class="btn ghost" id="moreAll" style="width:100%">'+esc(t("show40"))+'</button>';
     }
-    h+='<div class="row" style="margin-top:18px"><button class="btn ghost" id="copy">'+esc(t("copy"))+'</button><button class="btn ghost" id="restart">'+esc(t("restart"))+'</button></div>'+sheetLink();
+    h+='<div class="row" style="margin-top:18px"><button class="btn ghost" id="copy">'+esc(t("copy"))+'</button><button class="btn ghost" id="pdf">'+esc(t("pdf"))+'</button><button class="btn ghost" id="restart">'+esc(t("restart"))+'</button></div>'+sheetLink();
   }
   if(SIGNUP_URL)h+='<div class="card help" style="margin-top:22px"><h3>'+esc(t("signup_h"))+'</h3><a class="btn primary" style="margin:4px 0" href="'+SIGNUP_URL+'" target="_blank" rel="noopener">'+esc(t("signup_btn"))+'</a></div>';
   app.innerHTML=h;
@@ -520,11 +525,20 @@ function results(app){
   const mc=$("#moreComm"); if(mc)mc.onclick=()=>{S.commShown+=6;render();};
   const ma=$("#moreAll"); if(ma)ma.onclick=()=>{S.allShown+=40;render();};
   const cp=$("#copy"); if(cp)cp.onclick=()=>copyList(list);
+  const pf=$("#pdf"); if(pf)pf.onclick=()=>printList(list);
+}
+function printList(list){
+  const top=list.slice().sort(SORTS[S.sort][1]).slice(0,15);
+  const head=S.cash?t("cp_head_cash",{n:list.length}):t("cp_head_loan",{n:list.length,l:loanName(S.loan)});
+  $("#printSheet").innerHTML='<h1>'+esc(t("pdf_title"))+'</h1><p class="pm">'+esc(head)+'</p>'+
+   top.map(h=>'<div class="ph"><b>'+esc(h.addr)+'</b>, '+esc(h.city)+' &middot; '+esc(C[h.c].name)+'<br>'+esc(t("facts",{bd:h.bd,ba:h.ba,sf:num(h.sf),fl:t("story",{n:h.fl}).replace("{n}",h.fl),plan:h.plan}))+'<br><b>'+(S.cash?m(h.price)+' &middot; '+esc(t("taxins",{x:fmt(h.p.Cash)})):m(h.p[S.loan])+esc(t("per_mo"))+' &middot; '+m(h.price))+'</b> &middot; '+esc(closingLabel(h.coe))+(h.df?' &middot; '+esc(t("dropped",{x:fmt(h.df-h.price)})):'')+'</div>').join("")+
+   '<p class="pm">'+esc(t("cp_foot",{name:CONTACT.name,title:t("title"),phone:CONTACT.phone,email:CONTACT.email}))+'</p><p class="pm">'+esc(S.cash?t("disc_cash",{d:DATA.updated}):t("disc_loan",{l:loanName(S.loan),note:t("l_"+S.loan),d:DATA.updated}))+'</p>';
+  window.print();
 }
 function copyList(list){
   const top=list.slice().sort(SORTS[S.sort][1]).slice(0,10);
   const txt=(S.cash?t("cp_head_cash",{n:list.length}):t("cp_head_loan",{n:list.length,l:loanName(S.loan)}))+"\n\n"+
-   top.map(h=>h.addr+", "+h.city+" ("+C[h.c].name+")\n"+t(S.cash?"cp_line_cash":"cp_line_loan",{bd:h.bd,ba:h.ba,sf:num(h.sf),price:fmt(h.price),pay:fmt(S.cash?h.p.Cash:h.p[S.loan])})+(h.df?" ▼ "+fmt(h.df-h.price):"")+"\n"+mapsUrl(h)).join("\n\n")+
+   top.map(h=>h.addr+", "+h.city+" ("+C[h.c].name+")\n"+t(S.cash?"cp_line_cash":"cp_line_loan",{bd:h.bd,ba:h.ba,sf:num(h.sf),price:fmt(h.price),pay:fmt(S.cash?h.p.Cash:h.p[S.loan])})+(h.df?" ▼ "+fmt(h.df-h.price):"")).join("\n\n")+
    "\n\n"+t("cp_foot",{name:CONTACT.name,title:t("title"),phone:CONTACT.phone,email:CONTACT.email});
   const fallback=()=>{const ta=document.createElement("textarea");ta.value=txt;document.body.appendChild(ta);ta.select();try{document.execCommand("copy");toast(t("copied"));}catch(e){}ta.remove();};
   try{navigator.clipboard.writeText(txt).then(()=>toast(t("copied")),fallback);}catch(e){fallback();}
