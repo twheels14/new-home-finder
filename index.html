@@ -50,7 +50,9 @@ h2{font-size:clamp(26px,5vw,34px);line-height:1.15;margin:4px 0 8px;font-weight:
 .stats{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 0;color:var(--muted);font-size:15px}
 .stats span{background:var(--bg);border-radius:999px;padding:6px 12px}
 .incent{background:var(--gold);border:2px solid var(--gold-line);color:var(--gold-ink);border-radius:14px;padding:12px 16px;margin:8px 0 14px;font-size:16px;font-weight:700}
-.incent small{display:block;font-size:12px;letter-spacing:.07em;text-transform:uppercase;font-weight:900;opacity:.85}
+.incent .ih{display:block;font-size:17px;font-weight:900}
+.incent ul{margin:6px 0 2px;padding-inline-start:20px;font-size:15px;font-weight:400;line-height:1.4}
+.incent li{margin:2px 0}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:58px;padding:0 26px;border-radius:14px;border:2px solid transparent;font-weight:900;font-size:19px;text-decoration:none}
 .btn.primary{background:var(--navy);color:var(--navy-ink)}
 .btn.primary:hover{filter:brightness(1.12)}
@@ -164,7 +166,7 @@ title:"New Home Consultant",sheet:"Skip & view full inventory spreadsheet ↗",l
 loaderr:"The inventory could not be loaded. Please open the full spreadsheet instead.",
 w_h1:"Find your new home",w_sub:"Answer four quick questions. You get a short list of available homes with the monthly payment already worked out.",
 start:"Start",go_sheet:"Go straight to the full spreadsheet ↗",st_homes:"{n} homes",st_comms:"{n} communities",st_upd:"Updated {d}",
-incent:"Current incentives",drops_btn:"See recent price drops ({n})",
+incent:"Current Incentives",drops_btn:"See recent price drops ({n})",
 q_of:"Question {n} of 4",back:"Back",skip:"Skip",cont:"Continue",show_homes:"Show my homes",
 q1_h:"Where would you like to live?",q1_sub:"Tap one or more areas. Not sure yet? Tap Skip.",g_sa:"San Antonio",g_bey:"Beyond San Antonio",
 a_saW:"West Side",a_saS:"South Side",a_saE:"East & Southeast",a_saO:"Other parts of town",a_nb:"New Braunfels, Cibolo, Marion & Seguin",a_south:"Converse, Elmendorf & south of town",a_hill:"Hill Country",a_austin:"Austin area",a_sanmarcos:"San Marcos",a_central:"Temple, Killeen & Salado",a_corpus:"Corpus Christi area",a_lubbock:"Lubbock area",
@@ -202,7 +204,7 @@ title:"Consultor de Viviendas Nuevas",sheet:"Omitir y ver la hoja de cálculo co
 loaderr:"No se pudo cargar el inventario. Abra la hoja de cálculo completa.",
 w_h1:"Encuentre su nueva casa",w_sub:"Responda cuatro preguntas rápidas. Recibirá una lista corta de casas disponibles con el pago mensual ya calculado.",
 start:"Comenzar",go_sheet:"Ir directo a la hoja de cálculo completa ↗",st_homes:"{n} casas",st_comms:"{n} comunidades",st_upd:"Actualizado {d}",
-incent:"Incentivos actuales",drops_btn:"Ver bajas de precio recientes ({n})",
+incent:"Incentivos Actuales",drops_btn:"Ver bajas de precio recientes ({n})",
 q_of:"Pregunta {n} de 4",back:"Atrás",skip:"Omitir",cont:"Continuar",show_homes:"Mostrar mis casas",
 q1_h:"¿Dónde le gustaría vivir?",q1_sub:"Toque una o más zonas. ¿No está seguro? Toque Omitir.",g_sa:"San Antonio",g_bey:"Fuera de San Antonio",
 a_saW:"Lado oeste",a_saS:"Lado sur",a_saE:"Este y sureste",a_saO:"Otras zonas de la ciudad",a_nb:"New Braunfels, Cibolo, Marion y Seguin",a_south:"Converse, Elmendorf y el sur de la ciudad",a_hill:"Hill Country (zona de colinas)",a_austin:"Área de Austin",a_sanmarcos:"San Marcos",a_central:"Temple, Killeen y Salado",a_corpus:"Área de Corpus Christi",a_lubbock:"Área de Lubbock",
@@ -355,7 +357,7 @@ function toast(msg){const e=$("#toast");e.textContent=msg;e.hidden=false;clearTi
 function progress(n){return '<div class="progress" aria-hidden="true">'+[1,2,3,4].map(i=>'<i class="'+(i<=n?'on':'')+'"></i>').join("")+'</div>';}
 function go(n){S.step=n;render();window.scrollTo({top:0});}
 const arrow=()=>isRTL()?"&larr;":"&rarr;";
-const incentBar=()=>DATA&&DATA.incent?'<div class="incent"><small>'+esc(t("incent"))+'</small>'+esc(DATA.incent)+'</div>':'';
+const incentBar=()=>{if(!DATA||!DATA.incent)return'';const items=DATA.incent.split(/\s+[-–—]\s+/).map(x=>x.trim()).filter(Boolean);return '<div class="incent"><b class="ih">'+esc(t("incent"))+'</b><ul>'+items.map(x=>'<li>'+esc(x)+'</li>').join("")+'</ul></div>';};
 const dropTotal=()=>H.filter(h=>h.df).length;
 
 /* ---------- screens ---------- */
