@@ -165,7 +165,7 @@ clear_all:"Clear all selections",tip_added:"added",tip_removed:"removed",tip_cir
 live_sel:"{n} community selected, {h} homes|{n} communities selected, {h} homes",live_none:"Nothing selected means anywhere.",map_aria:"Map of communities. Tap a dot to add or remove it.",
 q2_h:"How are you buying, and what is your budget?",q2_sub_cash:"No loan needed. Enter the most you want to spend.",q2_sub_loan:"Enter the most you want to spend. Switch between a monthly payment and a total price.",
 with_loan:"With a loan",pay_cash:"Paying cash",monthly:"Monthly payment",total:"Total price",per_month:"per month, up to",up_to:"up to",
-loan_h:"Loan type used for payments",most_common:"(most common)",l_FHA:"3.5% down",l_Conventional:"10% down",l_VA:"0% down, veterans",l_USDA:"0% down, rural areas",n_Conventional:"Conventional",
+loan_h:"Loan type used for payments",most_common:"(most common)",l_FHA:"3.5% down (down payment assistance options available)",l_Conventional:"10% down",l_VA:"0% down, veterans",l_USDA:"0% down, rural areas",n_Conventional:"Conventional",
 cash_note:"Each home will show its price, plus an estimate of the monthly property tax and insurance an owner pays.",
 fit:"{n} home fits so far|{n} homes fit so far",
 q3_h:"How much room do you need?",q3_sub:"Choose the fewest bedrooms you can live with.",bedrooms:"Bedrooms",sqft_h:"Square feet",any:"Any",
@@ -203,7 +203,7 @@ clear_all:"Borrar todas las selecciones",tip_added:"agregada",tip_removed:"quita
 live_sel:"{n} comunidad seleccionada, {h} casas|{n} comunidades seleccionadas, {h} casas",live_none:"Si no selecciona nada, se muestra todo.",map_aria:"Mapa de comunidades. Toque un punto para agregarlo o quitarlo.",
 q2_h:"¿Cómo va a comprar y cuál es su presupuesto?",q2_sub_cash:"No se necesita préstamo. Ingrese lo máximo que desea gastar.",q2_sub_loan:"Ingrese lo máximo que desea gastar. Cambie entre pago mensual y precio total.",
 with_loan:"Con préstamo",pay_cash:"Pago en efectivo",monthly:"Pago mensual",total:"Precio total",per_month:"por mes, hasta",up_to:"hasta",
-loan_h:"Tipo de préstamo para los pagos",most_common:"(el más común)",l_FHA:"3.5% de enganche",l_Conventional:"10% de enganche",l_VA:"0% de enganche, veteranos",l_USDA:"0% de enganche, zonas rurales",n_Conventional:"Convencional",
+loan_h:"Tipo de préstamo para los pagos",most_common:"(el más común)",l_FHA:"3.5% de enganche (opciones de asistencia para el enganche disponibles)",l_Conventional:"10% de enganche",l_VA:"0% de enganche, veteranos",l_USDA:"0% de enganche, zonas rurales",n_Conventional:"Convencional",
 cash_note:"Cada casa mostrará su precio y un estimado de los impuestos y el seguro mensuales que paga un propietario.",
 fit:"{n} casa cumple hasta ahora|{n} casas cumplen hasta ahora",
 q3_h:"¿Cuánto espacio necesita?",q3_sub:"Elija el menor número de recámaras con el que pueda vivir.",bedrooms:"Recámaras",sqft_h:"Pies cuadrados",any:"Cualquiera",
@@ -241,7 +241,7 @@ clear_all:"נקה את כל הבחירות",tip_added:"נוספה",tip_removed:"
 live_sel:"שכונה אחת נבחרה, {h} בתים|{n} שכונות נבחרו, {h} בתים",live_none:"אם לא בוחרים דבר, מוצגים כל האזורים.",map_aria:"מפת השכונות. הקש על נקודה להוספה או הסרה.",
 q2_h:"איך אתה קונה, ומה התקציב שלך?",q2_sub_cash:"אין צורך בהלוואה. הזן את הסכום המרבי שאתה רוצה להוציא.",q2_sub_loan:"הזן את הסכום המרבי שאתה רוצה להוציא. אפשר לבחור בין תשלום חודשי למחיר כולל.",
 with_loan:"עם הלוואה",pay_cash:"תשלום במזומן",monthly:"תשלום חודשי",total:"מחיר כולל",per_month:"לחודש, עד",up_to:"עד",
-loan_h:"סוג ההלוואה לחישוב התשלומים",most_common:"(הנפוץ ביותר)",l_FHA:"3.5% מקדמה",l_Conventional:"10% מקדמה",l_VA:"ללא מקדמה, ותיקי צבא",l_USDA:"ללא מקדמה, אזורים כפריים",n_Conventional:"קונבנציונלית",
+loan_h:"סוג ההלוואה לחישוב התשלומים",most_common:"(הנפוץ ביותר)",l_FHA:"3.5% מקדמה (קיימות אפשרויות לסיוע במקדמה)",l_Conventional:"10% מקדמה",l_VA:"ללא מקדמה, ותיקי צבא",l_USDA:"ללא מקדמה, אזורים כפריים",n_Conventional:"קונבנציונלית",
 cash_note:"כל בית יוצג עם מחירו ועם הערכה של מס הרכוש והביטוח החודשיים שמשלם בעל הבית.",
 fit:"בית אחד מתאים עד כה|{n} בתים מתאימים עד כה",
 q3_h:"כמה מקום אתה צריך?",q3_sub:"בחר את מספר חדרי השינה המינימלי שמספיק לך.",bedrooms:"חדרי שינה",sqft_h:"רגל רבוע (sq ft)",any:"הכול",
@@ -354,7 +354,7 @@ function footer(){
   const disc=(S.step===2||S.step===5);
   const L=LOANS[S.loan];
   return '<div class="contact"><b>'+esc(t("contact_h"))+'</b><br>'+CONTACT.name+', '+esc(t("title"))+'<br><a href="tel:+18307437270" dir="ltr">'+CONTACT.phone+'</a> &middot; <a href="mailto:'+CONTACT.email+'" dir="ltr">'+CONTACT.email+'</a><br><a class="btn primary tour" href="sms:+18307437270?&body='+encodeURIComponent(t("sms_body"))+'">'+esc(t("tour_now"))+'</a></div>'+
-   (disc&&S.cash?esc(t("disc_cash",{d:DATA.updated})):disc?esc(t("disc_loan",{l:loanName(S.loan),note:t("l_"+S.loan),r:rateTxt(S.loan),d:DATA.updated})):'');
+   (disc&&S.cash?esc(t("disc_cash",{d:DATA.updated})):disc?esc(t("disc_loan",{l:loanName(S.loan),note:t("l_"+S.loan).replace(/\s*\(.*\)$/,""),r:rateTxt(S.loan),d:DATA.updated})):'');
 }
 const sheetLink=()=>'<p class="skipsheet"><a href="'+SHEET_URL+'" target="_blank" rel="noopener">'+esc(t("sheet"))+'</a></p>';
 function welcome(app){
@@ -533,7 +533,7 @@ function printList(list){
   const head=S.cash?t("cp_head_cash",{n:list.length}):t("cp_head_loan",{n:list.length,l:loanName(S.loan)});
   $("#printSheet").innerHTML='<h1>'+esc(t("pdf_title"))+'</h1><p class="pm">'+esc(head)+'</p>'+
    top.map(h=>'<div class="ph"><b>'+esc(h.addr)+'</b>, '+esc(h.city)+' &middot; '+esc(C[h.c].name)+'<br>'+esc(t("facts",{bd:h.bd,ba:h.ba,sf:num(h.sf),fl:t("story",{n:h.fl}).replace("{n}",h.fl),plan:h.plan}))+'<br><b>'+(S.cash?m(h.price)+' &middot; '+esc(t("taxins",{x:fmt(h.p.Cash)})):m(h.p[S.loan])+esc(t("per_mo"))+' &middot; '+m(h.price))+'</b> &middot; '+esc(closingLabel(h.coe))+(h.df?' &middot; '+esc(t("dropped",{x:fmt(h.df-h.price)})):'')+'</div>').join("")+
-   '<p class="pm">'+esc(t("cp_foot",{name:CONTACT.name,title:t("title"),phone:CONTACT.phone,email:CONTACT.email}))+'</p><p class="pm">'+esc(S.cash?t("disc_cash",{d:DATA.updated}):t("disc_loan",{l:loanName(S.loan),note:t("l_"+S.loan),r:rateTxt(S.loan),d:DATA.updated}))+'</p>';
+   '<p class="pm">'+esc(t("cp_foot",{name:CONTACT.name,title:t("title"),phone:CONTACT.phone,email:CONTACT.email}))+'</p><p class="pm">'+esc(S.cash?t("disc_cash",{d:DATA.updated}):t("disc_loan",{l:loanName(S.loan),note:t("l_"+S.loan).replace(/\s*\(.*\)$/,""),r:rateTxt(S.loan),d:DATA.updated}))+'</p>';
   window.print();
 }
 function copyList(list){
