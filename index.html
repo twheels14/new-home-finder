@@ -94,6 +94,7 @@ h2{font-size:clamp(26px,5vw,34px);line-height:1.15;margin:4px 0 8px;font-weight:
 .toolbar select{border:2px solid var(--line);background:var(--surface);border-radius:12px;min-height:48px;padding:0 12px;font-size:16px;font-weight:700}
 .comm{margin:0 0 16px;overflow:hidden}
 .comm header{padding:16px 18px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;background:var(--teal-soft);border-bottom:1px solid var(--line)}
+.est{font-size:12px;color:var(--muted);font-weight:400}
 .clink{font-size:15px;font-weight:700;display:inline-block;margin-top:4px}
 .comm h3{margin:0;font-size:21px;font-weight:900}
 .comm .meta{font-size:15px;color:var(--muted)}
@@ -178,13 +179,13 @@ by_comm:"By community",all_homes:"All homes",sort:"Sort:",s_pay:"Lowest payment"
 comm_match:"{n} home matches|{n} homes match",more_homes:"Show {n} more home|Show {n} more homes",more_comm:"Show {n} more communities ({m} not shown yet)",show40:"Show 40 more",
 facts:"{bd} bd · {ba} ba · {sf} sq ft · {fl} · {plan}",story:"1 story|{n} stories",per_mo:"/mo",taxins:"about {x}/mo tax & insurance",
 view_map:"View community",ready_tag:"Move-in ready",closing:"Ready by {d}",ready_now:"Ready now",dropped:"▼ Price dropped {x}",was:"was {x}",
-copy:"Copy this list to send",copied:"List copied",restart:"Start over",
+copy:"Copy this list to send",copied:"List copied",share:"Copy link to these results",shared:"Link copied",est:"(estimated)",restart:"Start over",
 nomatch_h:"No homes fit all of that. Try one of these:",more_opt_h:"Want to see more options?",
 sg_area:"Look anywhere in Texas",sg_beds:"Allow any number of bedrooms",sg_sqft:"Allow any size",sg_when:"Allow any move-in date",sg_budget:"Raise the budget by about 10% ({x})",sg_loan:"See payments as a {l} loan",sg_drops:"Include homes without price drops",
 signup_h:"Get new inventory and incentives by email each week",signup_btn:"Sign up (30 seconds)",
 contact_h:"Questions?",tour_now:"Tour Now",sms_body:"Hi Trevor, I would like to tour a new home.",pdf:"Save as PDF",pdf_title:"Your new home matches",
-disc_loan:"Payments are estimates for a {l} loan ({note}) at {r} interest, 30-year fixed, with property taxes, homeowner insurance and mortgage insurance included. Not a loan offer. Prices and availability change daily. Inventory last updated {d}.",
-disc_cash:"Cash purchase: no loan. The monthly figure is only estimated property tax and homeowner insurance. Estimates only. Prices and availability change daily. Inventory last updated {d}.",
+disc_loan:"Payments are estimates for a {l} loan ({note}) at {r} interest, 30-year fixed, with property taxes, homeowner insurance and mortgage insurance included. Not a loan offer. Prices, availability and estimated ready-by dates can change daily. Inventory last updated {d}.",
+disc_cash:"Cash purchase: no loan. The monthly figure is only estimated property tax and homeowner insurance. Estimates only. Prices, availability and estimated ready-by dates can change daily. Inventory last updated {d}.",
 cp_head_loan:"New homes that match ({n} total, {l} estimate):",cp_head_cash:"New homes that match ({n} total, cash purchase):",cp_line_loan:"{bd} bd, {ba} ba, {sf} sq ft. {price}, about {pay}/mo",cp_line_cash:"{bd} bd, {ba} ba, {sf} sq ft. {price}, about {pay}/mo tax and insurance",cp_foot:"Estimates only. Questions or to tour: {name}, {title}, {phone}, {email}"
 },
 es:{
@@ -216,13 +217,13 @@ by_comm:"Por comunidad",all_homes:"Todas las casas",sort:"Ordenar:",s_pay:"Pago 
 comm_match:"{n} casa coincide|{n} casas coinciden",more_homes:"Mostrar {n} casa más|Mostrar {n} casas más",more_comm:"Mostrar {n} comunidades más ({m} aún sin mostrar)",show40:"Mostrar 40 más",
 facts:"{bd} rec · {ba} baños · {sf} pies² · {fl} · {plan}",story:"1 piso|{n} pisos",per_mo:"/mes",taxins:"aprox. {x}/mes en impuestos y seguro",
 view_map:"Ver comunidad",ready_tag:"Lista para mudarse",closing:"Lista para {d}",ready_now:"Disponible ahora",dropped:"▼ Bajó de precio {x}",was:"antes {x}",
-copy:"Copiar esta lista para enviar",copied:"Lista copiada",restart:"Empezar de nuevo",
+copy:"Copiar esta lista para enviar",copied:"Lista copiada",share:"Copiar enlace a estos resultados",shared:"Enlace copiado",est:"(estimado)",restart:"Empezar de nuevo",
 nomatch_h:"Ninguna casa cumple todo eso. Pruebe una de estas opciones:",more_opt_h:"¿Quiere ver más opciones?",
 sg_area:"Buscar en todo Texas",sg_beds:"Permitir cualquier número de recámaras",sg_sqft:"Permitir cualquier tamaño",sg_when:"Permitir cualquier fecha de mudanza",sg_budget:"Subir el presupuesto un 10% aprox. ({x})",sg_loan:"Ver pagos con un préstamo {l}",sg_drops:"Incluir casas sin baja de precio",
 signup_h:"Reciba cada semana el inventario nuevo e incentivos por correo",signup_btn:"Registrarse (30 segundos)",
 contact_h:"¿Preguntas?",tour_now:"Visitar ahora",sms_body:"Hola Trevor, me gustaría visitar una casa nueva.",pdf:"Guardar como PDF",pdf_title:"Casas nuevas que le convienen",
-disc_loan:"Los pagos son estimados para un préstamo {l} ({note}) con {r} de interés, tasa fija a 30 años, e incluyen impuestos a la propiedad, seguro del hogar y seguro hipotecario. No es una oferta de préstamo. Los precios y la disponibilidad cambian a diario. Inventario actualizado por última vez: {d}.",
-disc_cash:"Compra en efectivo: sin préstamo. La cifra mensual es solo un estimado de impuestos a la propiedad y seguro del hogar. Solo estimados. Los precios y la disponibilidad cambian a diario. Inventario actualizado por última vez: {d}.",
+disc_loan:"Los pagos son estimados para un préstamo {l} ({note}) con {r} de interés, tasa fija a 30 años, e incluyen impuestos a la propiedad, seguro del hogar y seguro hipotecario. No es una oferta de préstamo. Los precios, la disponibilidad y las fechas estimadas de entrega pueden cambiar a diario. Inventario actualizado por última vez: {d}.",
+disc_cash:"Compra en efectivo: sin préstamo. La cifra mensual es solo un estimado de impuestos a la propiedad y seguro del hogar. Solo estimados. Los precios, la disponibilidad y las fechas estimadas de entrega pueden cambiar a diario. Inventario actualizado por última vez: {d}.",
 cp_head_loan:"Casas nuevas que coinciden ({n} en total, estimado {l}):",cp_head_cash:"Casas nuevas que coinciden ({n} en total, compra en efectivo):",cp_line_loan:"{bd} rec, {ba} baños, {sf} pies². {price}, aprox. {pay}/mes",cp_line_cash:"{bd} rec, {ba} baños, {sf} pies². {price}, aprox. {pay}/mes en impuestos y seguro",cp_foot:"Solo estimados. Preguntas o para visitar: {name}, {title}, {phone}, {email}"
 },
 he:{
@@ -254,13 +255,13 @@ by_comm:"לפי שכונה",all_homes:"כל הבתים",sort:"מיון:",s_pay:"
 comm_match:"בית אחד תואם|{n} בתים תואמים",more_homes:"הצג בית נוסף אחד|הצג עוד {n} בתים",more_comm:"הצג עוד {n} שכונות (עוד {m} לא מוצגות)",show40:"הצג עוד 40",
 facts:"{bd} חד׳ שינה · {ba} חד׳ רחצה · {sf} רגל רבוע · {fl} · {plan}",story:"קומה אחת|{n} קומות",per_mo:" לחודש",taxins:"כ-{x} לחודש מס וביטוח",
 view_map:"לצפייה בשכונה",ready_tag:"מוכן לכניסה",closing:"מוכן עד {d}",ready_now:"מוכן עכשיו",dropped:"▼ המחיר ירד ב-{x}",was:"היה {x}",
-copy:"העתק רשימה זו לשליחה",copied:"הרשימה הועתקה",restart:"התחל מחדש",
+copy:"העתק רשימה זו לשליחה",copied:"הרשימה הועתקה",share:"העתק קישור לתוצאות אלה",shared:"הקישור הועתק",est:"(משוער)",restart:"התחל מחדש",
 nomatch_h:"אין בתים שמתאימים לכל זה. נסה אחת מהאפשרויות:",more_opt_h:"רוצה לראות עוד אפשרויות?",
 sg_area:"חפש בכל טקסס",sg_beds:"אפשר כל מספר חדרי שינה",sg_sqft:"אפשר כל גודל",sg_when:"אפשר כל מועד כניסה",sg_budget:"העלה את התקציב בכ-10% ({x})",sg_loan:"הצג תשלומים להלוואת {l}",sg_drops:"הצג גם בתים ללא הורדת מחיר",
 signup_h:"קבל מדי שבוע מלאי חדש והטבות במייל",signup_btn:"הרשמה (30 שניות)",
 contact_h:"שאלות?",tour_now:"לסיור עכשיו",sms_body:"שלום טרבור, אני מעוניין לסייר בבית חדש.",pdf:"שמירה כ-PDF",pdf_title:"הבתים החדשים שמתאימים לך",
-disc_loan:"התשלומים הם הערכות להלוואת {l} ({note}) בריבית של {r}, קבועה ל-30 שנה, וכוללים מס רכוש, ביטוח בית וביטוח משכנתא. אין זו הצעת הלוואה. המחירים והזמינות משתנים מדי יום. המלאי עודכן לאחרונה: {d}.",
-disc_cash:"רכישה במזומן: ללא הלוואה. הסכום החודשי הוא הערכה של מס רכוש וביטוח בית בלבד. הערכות בלבד. המחירים והזמינות משתנים מדי יום. המלאי עודכן לאחרונה: {d}.",
+disc_loan:"התשלומים הם הערכות להלוואת {l} ({note}) בריבית של {r}, קבועה ל-30 שנה, וכוללים מס רכוש, ביטוח בית וביטוח משכנתא. אין זו הצעת הלוואה. המחירים, הזמינות ותאריכי המוכנות המשוערים עשויים להשתנות מדי יום. המלאי עודכן לאחרונה: {d}.",
+disc_cash:"רכישה במזומן: ללא הלוואה. הסכום החודשי הוא הערכה של מס רכוש וביטוח בית בלבד. הערכות בלבד. המחירים, הזמינות ותאריכי המוכנות המשוערים עשויים להשתנות מדי יום. המלאי עודכן לאחרונה: {d}.",
 cp_head_loan:"בתים חדשים שמתאימים ({n} בסה״כ, הערכת {l}):",cp_head_cash:"בתים חדשים שמתאימים ({n} בסה״כ, רכישה במזומן):",cp_line_loan:"{bd} חד׳ שינה, {ba} חד׳ רחצה, {sf} רגל רבוע. {price}, כ-{pay} לחודש",cp_line_cash:"{bd} חד׳ שינה, {ba} חד׳ רחצה, {sf} רגל רבוע. {price}, כ-{pay} לחודש מס וביטוח",cp_foot:"הערכות בלבד. לשאלות או לסיור: {name}, {title}, {phone}, {email}"
 }};
 const LOCALE={en:"en-US",es:"es-US",he:"he-IL"};
@@ -456,7 +457,7 @@ function homeRow(h){
   const drop=h.df?'<span class="tag drop">'+esc(t("dropped",{x:fmt(h.df-h.price)}))+'</span> <span class="facts">'+esc(t("was",{x:fmt(h.df)}))+'</span>':'';
   return '<div class="home"><div><div class="addr">'+esc(h.addr)+'</div><div class="facts">'+esc(t("facts",{bd:h.bd,ba:h.ba,sf:num(h.sf),fl:t("story",{n:h.fl}).replace("{n}",h.fl),plan:h.plan}))+'</div></div>'+
    (S.cash?'<div><div class="pay">'+m(h.price)+'</div><div class="price">'+t("taxins",{x:m(h.p.Cash)})+'</div></div>':'<div><div class="pay">'+m(h.p[S.loan])+'<small>'+esc(t("per_mo"))+'</small></div><div class="price">'+m(h.price)+'</div></div>')+
-   '<div class="links">'+(drop||'')+'<span class="facts">'+esc(closingLabel(h.coe))+(h.coe<=TODAY?'<span class="tag">'+esc(t("ready_tag"))+'</span>':'')+'</span></div></div>';
+   '<div class="links">'+(drop||'')+'<span class="facts">'+esc(closingLabel(h.coe))+(h.coe>TODAY?' <span class="est">'+esc(t("est"))+'</span>':'')+(h.coe<=TODAY?'<span class="tag">'+esc(t("ready_tag"))+'</span>':'')+'</span></div></div>';
 }
 function summaryChips(){
   const full=AREAS.filter(a=>areaState(a)===2);
@@ -510,7 +511,7 @@ function results(app){
       h+=vis.map(x=>'<section class="card comm"><header style="padding:10px 18px"><div class="meta"><b style="color:var(--ink)">'+esc(C[x.c].name)+'</b>, '+esc(x.city)+' &middot; <a class="clink" href="'+mapsUrl(x)+'" target="_blank" rel="noopener">'+esc(t("view_map"))+' &#8599;</a></div></header>'+homeRow(x)+'</section>').join("");
       if(sorted.length>S.allShown)h+='<button class="btn ghost" id="moreAll" style="width:100%">'+esc(t("show40"))+'</button>';
     }
-    h+='<div class="row" style="margin-top:18px"><button class="btn ghost" id="copy">'+esc(t("copy"))+'</button><button class="btn ghost" id="pdf">'+esc(t("pdf"))+'</button><button class="btn ghost" id="restart">'+esc(t("restart"))+'</button></div>'+sheetLink();
+    h+='<div class="row" style="margin-top:18px"><button class="btn ghost" id="copy">'+esc(t("copy"))+'</button><button class="btn ghost" id="pdf">'+esc(t("pdf"))+'</button><button class="btn ghost" id="share">'+esc(t("share"))+'</button><button class="btn ghost" id="restart">'+esc(t("restart"))+'</button></div>'+sheetLink();
   }
   if(SIGNUP_URL)h+='<div class="card help" style="margin-top:22px"><h3>'+esc(t("signup_h"))+'</h3><a class="btn primary" style="margin:4px 0" href="'+SIGNUP_URL+'" target="_blank" rel="noopener">'+esc(t("signup_btn"))+'</a></div>';
   app.innerHTML=h;
@@ -525,14 +526,16 @@ function results(app){
   app.querySelectorAll("[data-more]").forEach(b=>b.onclick=()=>{S.shown[b.dataset.more]=999;render();});
   const mc=$("#moreComm"); if(mc)mc.onclick=()=>{S.commShown+=6;render();};
   const ma=$("#moreAll"); if(ma)ma.onclick=()=>{S.allShown+=40;render();};
-  const cp=$("#copy"); if(cp)cp.onclick=()=>copyList(list);
-  const pf=$("#pdf"); if(pf)pf.onclick=()=>printList(list);
+  const cp=$("#copy"); if(cp)cp.onclick=()=>{track("copy-list");copyList(list);};
+  const pf=$("#pdf"); if(pf)pf.onclick=()=>{track("pdf");printList(list);};
+  const sh=$("#share"); if(sh)sh.onclick=()=>{track("share-link");shareLink();};
+  trackResults(list);
 }
 function printList(list){
   const top=list.slice().sort(SORTS[S.sort][1]).slice(0,15);
   const head=S.cash?t("cp_head_cash",{n:list.length}):t("cp_head_loan",{n:list.length,l:loanName(S.loan)});
   $("#printSheet").innerHTML='<h1>'+esc(t("pdf_title"))+'</h1><p class="pm">'+esc(head)+'</p>'+
-   top.map(h=>'<div class="ph"><b>'+esc(h.addr)+'</b>, '+esc(h.city)+' &middot; '+esc(C[h.c].name)+'<br>'+esc(t("facts",{bd:h.bd,ba:h.ba,sf:num(h.sf),fl:t("story",{n:h.fl}).replace("{n}",h.fl),plan:h.plan}))+'<br><b>'+(S.cash?m(h.price)+' &middot; '+esc(t("taxins",{x:fmt(h.p.Cash)})):m(h.p[S.loan])+esc(t("per_mo"))+' &middot; '+m(h.price))+'</b> &middot; '+esc(closingLabel(h.coe))+(h.df?' &middot; '+esc(t("dropped",{x:fmt(h.df-h.price)})):'')+'</div>').join("")+
+   top.map(h=>'<div class="ph"><b>'+esc(h.addr)+'</b>, '+esc(h.city)+' &middot; '+esc(C[h.c].name)+'<br>'+esc(t("facts",{bd:h.bd,ba:h.ba,sf:num(h.sf),fl:t("story",{n:h.fl}).replace("{n}",h.fl),plan:h.plan}))+'<br><b>'+(S.cash?m(h.price)+' &middot; '+esc(t("taxins",{x:fmt(h.p.Cash)})):m(h.p[S.loan])+esc(t("per_mo"))+' &middot; '+m(h.price))+'</b> &middot; '+esc(closingLabel(h.coe))+(h.coe>TODAY?' '+esc(t("est")):'')+(h.df?' &middot; '+esc(t("dropped",{x:fmt(h.df-h.price)})):'')+'</div>').join("")+
    '<p class="pm">'+esc(t("cp_foot",{name:CONTACT.name,title:t("title"),phone:CONTACT.phone,email:CONTACT.email}))+'</p><p class="pm">'+esc(S.cash?t("disc_cash",{d:DATA.updated}):t("disc_loan",{l:loanName(S.loan),note:t("l_"+S.loan).replace(/\s*\(.*\)$/,""),r:rateTxt(S.loan),d:DATA.updated}))+'</p>';
   window.print();
 }
@@ -545,10 +548,45 @@ function copyList(list){
   try{navigator.clipboard.writeText(txt).then(()=>toast(t("copied")),fallback);}catch(e){fallback();}
 }
 
+/* ---------- share link + visitor counts ---------- */
+const ANALYTICS={code:"",prefix:"trevor"};   /* GoatCounter site code (free, no cookies). Leave empty to turn counting off. */
+function track(path,title){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:ANALYTICS.prefix+"/"+path,title:title||path,event:true});}catch(e){}}
+let _lastTrack="";
+function trackResults(list){
+  const sig=[...S.sel].map(i=>C[i].name).join(",")+"|"+(S.cash?"cash":S.loan)+"|"+S.beds+"|"+S.when;
+  if(sig===_lastTrack)return; _lastTrack=sig;
+  const areas=AREAS.filter(a=>areaState(a)===2).map(a=>a.id);
+  track("results/"+(S.sel.size?(areas.length?areas.join("+"):"communities"):"anywhere"));
+  track("buyer/"+(S.cash?"cash":S.loan));
+}
+document.addEventListener("click",e=>{const a=e.target.closest&&e.target.closest(".tour");if(a)track("tour-now");});
+if(ANALYTICS.code){const sc=document.createElement("script");sc.async=true;sc.dataset.goatcounter="https://"+ANALYTICS.code+".goatcounter.com/count";sc.src="https://gc.zgo.at/count.js";document.head.appendChild(sc);}
+function shareState(){
+  const o={a:[...S.sel].map(i=>C[i].name+"|"+C[i].city),c:S.cash?1:0,m:S.mode,b:S.budget||0,l:S.loan,bd:S.beds,sf:S.sqft,w:S.when,d:S.dropsOnly?1:0,s:S.sort,v:S.view,g:LANG};
+  return o;
+}
+function shareLink(){
+  const url=location.origin+location.pathname+"#r="+encodeURIComponent(JSON.stringify(shareState()));
+  const fb=()=>{const ta=document.createElement("textarea");ta.value=url;document.body.appendChild(ta);ta.select();try{document.execCommand("copy");toast(t("shared"));}catch(e){}ta.remove();};
+  try{navigator.clipboard.writeText(url).then(()=>toast(t("shared")),fb);}catch(e){fb();}
+}
+function applyShared(){
+  try{
+    const m=location.hash.match(/^#r=(.+)$/); if(!m)return false;
+    const o=JSON.parse(decodeURIComponent(m[1]));
+    const keys=new Map(C.map(c=>[c.name+"|"+c.city,c.i]));
+    S.sel=new Set((o.a||[]).map(k=>keys.get(k)).filter(i=>i!=null));
+    S.cash=!!o.c; S.mode=o.m==="price"?"price":"pay"; S.budget=+o.b||null; if(LOANS[o.l]&&o.l!=="Cash")S.loan=o.l;
+    S.beds=+o.bd||0; S.sqft=+o.sf||0; S.when=+o.w||0; S.dropsOnly=!!o.d; if(SORTS[o.s])S.sort=o.s; if(o.v==="all"||o.v==="comm")S.view=o.v;
+    if(o.g&&T[o.g]&&!localStorage.getItem("nhf-lang")){LANG=o.g;applyLang();}
+    S.step=5; return true;
+  }catch(e){return false;}
+}
+
 /* ---------- start ---------- */
 document.querySelectorAll("#lang button").forEach(b=>b.onclick=()=>{LANG=b.dataset.lg;try{localStorage.setItem("nhf-lang",LANG);}catch(e){} render();});
 applyLang();
-fetch("data.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw 0;return r.json();}).then(d=>{initData(d);render();}).catch(()=>{$("#app").innerHTML='<p class="status">'+esc(t("loaderr"))+'</p>';});
+fetch("data.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw 0;return r.json();}).then(d=>{initData(d);applyShared();render();track("visit");}).catch(()=>{$("#app").innerHTML='<p class="status">'+esc(t("loaderr"))+'</p>';});
 </script>
 
 </body></html>
