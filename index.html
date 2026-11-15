@@ -337,7 +337,7 @@ function areaDesc(a){
 }
 
 /* ---------- state ---------- */
-const S={cash:false,step:0,sel:new Set(),mode:"pay",budget:null,loan:"FHA",beds:0,sqft:0,when:0,dropsOnly:false,sort:"pay",view:"comm",shown:{},allShown:40,commShown:6,mapView:"sa",draw:false,mapOpen:false,circle:null,tip:""};
+const S={cash:false,step:0,sel:new Set(),mode:"pay",budget:null,loan:"FHA",beds:0,sqft:0,when:0,dropsOnly:false,sort:"soon",view:"comm",shown:{},allShown:40,commShown:6,mapView:"sa",draw:false,mapOpen:false,circle:null,tip:""};
 const TODAY=(()=>{const d=new Date();return d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate();})();
 function addMonths(n){const d=new Date();d.setMonth(d.getMonth()+n);return d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate();}
 function matches(h,skip){
@@ -405,7 +405,7 @@ function welcome(app){
    (nd?'<button class="btn drop" id="dropsGo">'+esc(t("drops_btn",{n:nd}))+'</button>':'')+'</div>'+
    '<div class="stats"><span>'+esc(t("st_homes",{n:num(H.length)}))+'</span><span>'+esc(t("st_comms",{n:C.length}))+'</span><span>'+esc(t("st_upd",{d:DATA.updated}))+'</span></div></section>'+sheetLink();
   $("#start").onclick=()=>go(1);
-  const dg=$("#dropsGo"); if(dg)dg.onclick=()=>{S.sel.clear();S.budget=null;S.cash=false;S.beds=0;S.sqft=0;S.when=0;S.dropsOnly=true;S.sort="pay";go(5);};
+  const dg=$("#dropsGo"); if(dg)dg.onclick=()=>{S.sel.clear();S.budget=null;S.cash=false;S.beds=0;S.sqft=0;S.when=0;S.dropsOnly=true;S.sort="soon";go(5);};
 }
 function nav(back,nextLabel,skip){
   return '<div class="nav">'+(back!=null?'<button class="btn ghost" id="back">'+esc(t("back"))+'</button>':'')+
@@ -457,7 +457,7 @@ function qBudget(app){
   app.innerHTML=h;
   const upd=()=>{const n=count();$("#live").textContent=S.budget?t("fit",{n}).replace("{n}",num(n)):"";};
   upd();
-  app.querySelectorAll("[data-cash]").forEach(b=>b.onclick=()=>{S.cash=b.dataset.cash==="1";if(S.cash)S.mode="price";S.budget=null;S.sort=S.cash?"price":"pay";qBudget(app);});
+  app.querySelectorAll("[data-cash]").forEach(b=>b.onclick=()=>{S.cash=b.dataset.cash==="1";if(S.cash)S.mode="price";S.budget=null;S.sort="soon";qBudget(app);});
   app.querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>{S.mode=b.dataset.m;S.budget=null;qBudget(app);});
   app.querySelectorAll("[data-p]").forEach(b=>b.onclick=()=>{S.budget=+b.dataset.p;qBudget(app);});
   app.querySelectorAll("[data-l]").forEach(b=>b.onclick=()=>{S.loan=b.dataset.l;qBudget(app);});
@@ -492,7 +492,7 @@ function qWhen(app){
 }
 
 /* results */
-const SORTS={pay:["s_pay",(a,b)=>a.p[S.loan]-b.p[S.loan]],price:["s_price",(a,b)=>a.price-b.price],soon:["s_soon",(a,b)=>a.coe-b.coe],size:["s_size",(a,b)=>b.sf-a.sf]};
+const SORTS={soon:["s_soon",(a,b)=>a.coe-b.coe],pay:["s_pay",(a,b)=>a.p[S.loan]-b.p[S.loan]],price:["s_price",(a,b)=>a.price-b.price],size:["s_size",(a,b)=>b.sf-a.sf]};
 function homeRow(h){
   const drop=h.df?'<span class="tag drop">'+esc(t("dropped",{x:fmt(h.df-h.price)}))+'</span> <span class="facts">'+esc(t("was",{x:fmt(h.df)}))+'</span>':'';
   return '<div class="home"><div><div class="addr">'+esc(h.addr)+'</div><div class="facts">'+esc(t("facts",{bd:h.bd,ba:h.ba,sf:num(h.sf),fl:t("story",{n:h.fl}).replace("{n}",h.fl),plan:h.plan}))+'</div></div>'+
@@ -522,7 +522,7 @@ function suggestions(){
   return out.sort((a,b)=>b.n-a.n).slice(0,3);
 }
 function results(app){
-  if(S.cash&&S.sort==="pay")S.sort="price";
+  if(S.cash&&S.sort==="pay")S.sort="soon";
   const list=H.filter(h=>matches(h)); const cmp=SORTS[S.sort][1];
   const nDrops=H.filter(h=>matches(h,{drops:1})&&h.df).length;
   let h=incentBar()+'<p class="stepno">'+esc(t("your_results"))+'</p><div class="count">'+num(list.length)+' <small>'+esc(t("match",{n:list.length}))+'</small></div>'+summaryChips();
@@ -558,7 +558,7 @@ function results(app){
   app.querySelectorAll("[data-e]").forEach(b=>b.onclick=()=>go(+b.dataset.e));
   app.querySelectorAll("[data-nodrops]").forEach(b=>b.onclick=()=>{S.dropsOnly=false;render();});
   app.querySelectorAll("[data-sg]").forEach(b=>b.onclick=()=>{sg[+b.dataset.sg].fn();render();});
-  const rs=n=>{const e=$(n);if(e)e.onclick=()=>{S.sel.clear();S.budget=null;S.cash=false;S.mode="pay";S.sort="pay";S.beds=0;S.sqft=0;S.when=0;S.dropsOnly=false;S.shown={};S.allShown=40;S.commShown=6;go(0);};};
+  const rs=n=>{const e=$(n);if(e)e.onclick=()=>{S.sel.clear();S.budget=null;S.cash=false;S.mode="pay";S.sort="soon";S.beds=0;S.sqft=0;S.when=0;S.dropsOnly=false;S.shown={};S.allShown=40;S.commShown=6;go(0);};};
   rs("#restart");rs("#restart2");
   app.querySelectorAll("[data-vw]").forEach(b=>b.onclick=()=>{S.view=b.dataset.vw;render();});
   const dc=$("#dropsChip"); if(dc)dc.onclick=()=>{S.dropsOnly=!S.dropsOnly;S.commShown=6;render();};
