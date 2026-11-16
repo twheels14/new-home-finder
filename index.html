@@ -552,7 +552,7 @@ function results(app){
       h+=vis.map(x=>'<section class="card comm"><header style="padding:10px 18px"><div class="meta"><b style="color:var(--ink)">'+esc(C[x.c].name)+'</b>'+ctags(C[x.c])+', '+esc(x.city)+' &middot; <a class="clink" href="'+mapsUrl(x)+'" target="_blank" rel="noopener">'+esc(t("view_map"))+' &#8599;</a></div></header>'+homeRow(x)+'</section>').join("");
       if(sorted.length>S.allShown)h+='<button class="btn ghost" id="moreAll" style="width:100%">'+esc(t("show40"))+'</button>';
     }
-    h+='<div class="row" style="margin-top:18px"><button class="btn ghost" id="copy">'+esc(t("copy"))+'</button><button class="btn ghost" id="pdf">'+esc(t("pdf"))+'</button><button class="btn ghost" id="share">'+esc(t("share"))+'</button><button class="btn ghost" id="restart">'+esc(t("restart"))+'</button></div>'+sheetLink();
+    h+='<div class="row" style="margin-top:18px"><button class="btn ghost" id="pdf">'+esc(t("pdf"))+'</button><button class="btn ghost" id="share">'+esc(t("share"))+'</button><button class="btn ghost" id="restart">'+esc(t("restart"))+'</button></div>'+sheetLink();
   }
   if(SIGNUP_URL)h+='<div class="card help" style="margin-top:22px"><h3>'+esc(t("signup_h"))+'</h3><a class="btn primary" style="margin:4px 0" href="'+SIGNUP_URL+'" target="_blank" rel="noopener">'+esc(t("signup_btn"))+'</a></div>';
   app.innerHTML=h;
@@ -567,7 +567,6 @@ function results(app){
   app.querySelectorAll("[data-more]").forEach(b=>b.onclick=()=>{S.shown[b.dataset.more]=999;render();});
   const mc=$("#moreComm"); if(mc)mc.onclick=()=>{S.commShown+=6;render();};
   const ma=$("#moreAll"); if(ma)ma.onclick=()=>{S.allShown+=40;render();};
-  const cp=$("#copy"); if(cp)cp.onclick=()=>{track("copy-list");copyList(list);};
   const pf=$("#pdf"); if(pf)pf.onclick=()=>{track("pdf");printList(list);};
   const sh=$("#share"); if(sh)sh.onclick=()=>{track("share-link");shareLink();};
   trackResults(list);
