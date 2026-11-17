@@ -124,6 +124,9 @@ html[dir="rtl"] .home .addr{text-align:right}
 .home .links{grid-column:1/-1;font-size:15px;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
 .tag{display:inline-block;font-size:13px;font-weight:700;border-radius:999px;padding:2px 10px;background:var(--good-soft);color:var(--good);margin-inline-start:6px;vertical-align:middle}
 .tag.drop{background:var(--drop-soft);color:var(--drop);margin:0;font-size:14px;padding:3px 12px}
+.home .btn.cardbtn{min-height:44px;padding:0 14px;font-size:15px;width:auto;margin-inline-start:auto}
+.ov{position:fixed;inset:0;background:rgba(10,16,28,.7);display:flex;align-items:center;justify-content:center;padding:16px;z-index:50;overflow:auto}
+.dlg{max-width:520px;width:100%;padding:16px;max-height:100%;overflow:auto}.dlg img{width:100%;height:auto;border-radius:12px;border:1px solid var(--line);margin:8px 0}.dlg p{margin:6px 0;font-size:15px;color:var(--muted)}.dlg .btn{min-height:48px;font-size:16px;width:auto}
 .more{display:block;width:100%;border:0;border-top:1px solid var(--line);background:var(--surface);min-height:52px;font-weight:900;font-size:16px;color:var(--teal-ink)}
 .more:hover{background:var(--teal-soft)}
 .help{padding:20px;margin:16px 0}
@@ -136,7 +139,7 @@ html[dir="rtl"] .help .btn{margin:4px 0 4px 8px}
 .tour{margin-top:12px;min-height:54px;font-size:18px;color:var(--navy-ink)!important}
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(24px + env(safe-area-inset-bottom,0px));background:var(--navy);color:var(--navy-ink);padding:12px 20px;border-radius:12px;font-weight:700;z-index:20}
 .status{padding:30px 6px;font-size:19px;color:var(--muted)}
-@media (max-width:520px){body{font-size:17px}.home{grid-template-columns:1fr}.home .pay,.home .price{text-align:start}.comm .rng{text-align:start}.btn{width:100%}.nav .btn{width:auto;flex:1}.nav .btn.link{flex:0}.hero .btn{width:100%}}
+@media (max-width:520px){body{font-size:17px}.home{grid-template-columns:1fr}.home .pay,.home .price{text-align:start}.comm .rng{text-align:start}.btn{width:100%}.nav .btn{width:auto;flex:1}.nav .btn.link{flex:0}.hero .btn{width:100%}.home .btn.cardbtn{width:auto}.dlg .btn{width:auto}}
 #printSheet{display:none}
 @media print{body>.wrap,.toast{display:none!important}#printSheet{display:block;color:#000;background:#fff;font-family:Lato,Arial,sans-serif;font-size:12pt}#printSheet h1{font-size:20pt;margin:0 0 6pt}#printSheet .ph{border-top:1px solid #999;padding:7pt 0;break-inside:avoid}#printSheet .pm{font-size:10pt;color:#333}body{background:#fff}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
@@ -200,7 +203,8 @@ signup_h:"Get new inventory and incentives by email each week",signup_btn:"Sign 
 contact_h:"Questions?",tour_now:"Tour Now",sms_body:"Hi Trevor, I would like to tour a new home.",pdf:"Save as PDF",pdf_title:"Your new home matches",
 disc_loan:"Payments are estimates for a {l} loan ({note}) at {r} interest, 30-year fixed, with property taxes, homeowner insurance and mortgage insurance included. Not a loan offer. Prices, availability and estimated ready-by dates can change daily. Inventory last updated {d}.",
 disc_cash:"Cash purchase: no loan. The monthly figure is only estimated property tax and homeowner insurance. Estimates only. Prices, availability and estimated ready-by dates can change daily. Inventory last updated {d}.",
-cp_head_loan:"New homes that match ({n} total, {l} estimate):",cp_head_cash:"New homes that match ({n} total, cash purchase):",cp_line_loan:"{bd} bd, {ba} ba, {sf} sq ft. {price}, about {pay}/mo",cp_line_cash:"{bd} bd, {ba} ba, {sf} sq ft. {price}, about {pay}/mo tax and insurance",cp_foot:"Estimates only. Questions or to tour: {name}, {title}, {phone}, {email}"
+cp_head_loan:"New homes that match ({n} total, {l} estimate):",cp_head_cash:"New homes that match ({n} total, cash purchase):",cp_line_loan:"{bd} bd, {ba} ba, {sf} sq ft. {price}, about {pay}/mo",cp_line_cash:"{bd} bd, {ba} ba, {sf} sq ft. {price}, about {pay}/mo tax and insurance",cp_foot:"Estimates only. Questions or to tour: {name}, {title}, {phone}, {email}",
+card:"Copy card",card_ok:"Card copied",card_h:"Home card",card_save:"Your browser blocked copying. Press and hold (or right-click) the image to copy or save it.",card_dl:"Download image",card_x:"Close",card_tag:"New home",card_pay:"Estimated monthly payment · {l} loan",card_cashp:"Cash purchase price",card_price:"Price",card_taxins:"Est. tax & insurance / mo",card_size:"Size",card_bd:"Bedrooms",card_ba:"Bathrooms",card_plan:"Plan",card_move:"Move-in",card_sqft:"{n} sq ft",card_est_loan:"Estimates only. Payment is for a {l} loan at {r}, 30-year fixed, with taxes and insurance included. Not a loan offer. Prices and availability can change daily.",card_est_cash:"Cash purchase, no loan. Tax and insurance figures are estimates. Prices and availability can change daily.",card_upd:"Inventory updated {d}",card_role:"New Home Consultant, Lennar"
 },
 es:{
 title:"Consultor de Viviendas Nuevas",sheet:"Omitir y ver la hoja de cálculo completa del inventario ↗",loading:"Cargando el inventario más reciente…",
@@ -238,7 +242,8 @@ signup_h:"Reciba cada semana el inventario nuevo e incentivos por correo",signup
 contact_h:"¿Preguntas?",tour_now:"Visitar ahora",sms_body:"Hola Trevor, me gustaría visitar una casa nueva.",pdf:"Guardar como PDF",pdf_title:"Casas nuevas que le convienen",
 disc_loan:"Los pagos son estimados para un préstamo {l} ({note}) con {r} de interés, tasa fija a 30 años, e incluyen impuestos a la propiedad, seguro del hogar y seguro hipotecario. No es una oferta de préstamo. Los precios, la disponibilidad y las fechas estimadas de entrega pueden cambiar a diario. Inventario actualizado por última vez: {d}.",
 disc_cash:"Compra en efectivo: sin préstamo. La cifra mensual es solo un estimado de impuestos a la propiedad y seguro del hogar. Solo estimados. Los precios, la disponibilidad y las fechas estimadas de entrega pueden cambiar a diario. Inventario actualizado por última vez: {d}.",
-cp_head_loan:"Casas nuevas que coinciden ({n} en total, estimado {l}):",cp_head_cash:"Casas nuevas que coinciden ({n} en total, compra en efectivo):",cp_line_loan:"{bd} rec, {ba} baños, {sf} pies². {price}, aprox. {pay}/mes",cp_line_cash:"{bd} rec, {ba} baños, {sf} pies². {price}, aprox. {pay}/mes en impuestos y seguro",cp_foot:"Solo estimados. Preguntas o para visitar: {name}, {title}, {phone}, {email}"
+cp_head_loan:"Casas nuevas que coinciden ({n} en total, estimado {l}):",cp_head_cash:"Casas nuevas que coinciden ({n} en total, compra en efectivo):",cp_line_loan:"{bd} rec, {ba} baños, {sf} pies². {price}, aprox. {pay}/mes",cp_line_cash:"{bd} rec, {ba} baños, {sf} pies². {price}, aprox. {pay}/mes en impuestos y seguro",cp_foot:"Solo estimados. Preguntas o para visitar: {name}, {title}, {phone}, {email}",
+card:"Copiar tarjeta",card_ok:"Tarjeta copiada",card_h:"Tarjeta de la casa",card_save:"Su navegador bloqueó la copia. Mantenga presionada (o haga clic derecho en) la imagen para copiarla o guardarla.",card_dl:"Descargar imagen",card_x:"Cerrar",card_tag:"Casa nueva",card_pay:"Pago mensual estimado · préstamo {l}",card_cashp:"Precio de compra en efectivo",card_price:"Precio",card_taxins:"Impuestos y seguro est. / mes",card_size:"Tamaño",card_bd:"Recámaras",card_ba:"Baños",card_plan:"Modelo",card_move:"Entrega",card_sqft:"{n} pies²",card_est_loan:"Solo estimados. El pago es para un préstamo {l} con {r}, tasa fija a 30 años, con impuestos y seguro incluidos. No es una oferta de préstamo. Los precios y la disponibilidad pueden cambiar a diario.",card_est_cash:"Compra en efectivo, sin préstamo. Los impuestos y el seguro son estimados. Los precios y la disponibilidad pueden cambiar a diario.",card_upd:"Inventario actualizado {d}",card_role:"Consultor de Casas Nuevas, Lennar"
 },
 he:{
 title:"יועץ לבתים חדשים",sheet:"דלג וצפה בגיליון המלא של המלאי ↗",loading:"טוען את המלאי העדכני…",
@@ -276,7 +281,8 @@ signup_h:"קבל מדי שבוע מלאי חדש והטבות במייל",signup
 contact_h:"שאלות?",tour_now:"לסיור עכשיו",sms_body:"שלום טרבור, אני מעוניין לסייר בבית חדש.",pdf:"שמירה כ-PDF",pdf_title:"הבתים החדשים שמתאימים לך",
 disc_loan:"התשלומים הם הערכות להלוואת {l} ({note}) בריבית של {r}, קבועה ל-30 שנה, וכוללים מס רכוש, ביטוח בית וביטוח משכנתא. אין זו הצעת הלוואה. המחירים, הזמינות ותאריכי המוכנות המשוערים עשויים להשתנות מדי יום. המלאי עודכן לאחרונה: {d}.",
 disc_cash:"רכישה במזומן: ללא הלוואה. הסכום החודשי הוא הערכה של מס רכוש וביטוח בית בלבד. הערכות בלבד. המחירים, הזמינות ותאריכי המוכנות המשוערים עשויים להשתנות מדי יום. המלאי עודכן לאחרונה: {d}.",
-cp_head_loan:"בתים חדשים שמתאימים ({n} בסה״כ, הערכת {l}):",cp_head_cash:"בתים חדשים שמתאימים ({n} בסה״כ, רכישה במזומן):",cp_line_loan:"{bd} חד׳ שינה, {ba} חד׳ רחצה, {sf} רגל רבוע. {price}, כ-{pay} לחודש",cp_line_cash:"{bd} חד׳ שינה, {ba} חד׳ רחצה, {sf} רגל רבוע. {price}, כ-{pay} לחודש מס וביטוח",cp_foot:"הערכות בלבד. לשאלות או לסיור: {name}, {title}, {phone}, {email}"
+cp_head_loan:"בתים חדשים שמתאימים ({n} בסה״כ, הערכת {l}):",cp_head_cash:"בתים חדשים שמתאימים ({n} בסה״כ, רכישה במזומן):",cp_line_loan:"{bd} חד׳ שינה, {ba} חד׳ רחצה, {sf} רגל רבוע. {price}, כ-{pay} לחודש",cp_line_cash:"{bd} חד׳ שינה, {ba} חד׳ רחצה, {sf} רגל רבוע. {price}, כ-{pay} לחודש מס וביטוח",cp_foot:"הערכות בלבד. לשאלות או לסיור: {name}, {title}, {phone}, {email}",
+card:"העתקת כרטיס",card_ok:"הכרטיס הועתק",card_h:"כרטיס הבית",card_save:"הדפדפן חסם את ההעתקה. לחצו לחיצה ארוכה (או קליק ימני) על התמונה כדי להעתיק או לשמור.",card_dl:"הורדת תמונה",card_x:"סגירה",card_tag:"בית חדש",card_pay:"תשלום חודשי משוער · הלוואת {l}",card_cashp:"מחיר רכישה במזומן",card_price:"מחיר",card_taxins:"מס וביטוח משוערים / חודש",card_size:"גודל",card_bd:"חדרי שינה",card_ba:"חדרי רחצה",card_plan:"דגם",card_move:"כניסה",card_sqft:"{n} רגל רבוע",card_est_loan:"הערכות בלבד. התשלום להלוואת {l} בריבית {r}, קבועה ל-30 שנה, כולל מס וביטוח. אין זו הצעת הלוואה. מחירים וזמינות עשויים להשתנות מדי יום.",card_est_cash:"רכישה במזומן, ללא הלוואה. נתוני המס והביטוח הם הערכות. מחירים וזמינות עשויים להשתנות מדי יום.",card_upd:"המלאי עודכן {d}",card_role:"יועץ לבתים חדשים, Lennar"
 }};
 const LOCALE={en:"en-US",es:"es-US",he:"he-IL"};
 let LANG="en";
@@ -501,7 +507,7 @@ function homeRow(h){
   const drop=h.df?'<span class="tag drop">'+esc(t("dropped",{x:fmt(h.df-h.price)}))+'</span> <span class="facts">'+esc(t("was",{x:fmt(h.df)}))+'</span>':'';
   return '<div class="home"><div><div class="addr">'+esc(h.addr)+'</div><div class="facts">'+esc(t("facts",{bd:h.bd,ba:h.ba,sf:num(h.sf),fl:t("story",{n:h.fl}).replace("{n}",h.fl),plan:h.plan}))+'</div></div>'+
    (S.cash?'<div><div class="pay">'+m(h.price)+'</div><div class="price">'+t("taxins",{x:m(h.p.Cash)})+'</div></div>':'<div><div class="pay">'+m(h.p[S.loan])+'<small>'+esc(t("per_mo"))+'</small></div><div class="price">'+m(h.price)+'</div></div>')+
-   '<div class="links">'+(drop||'')+'<span class="facts">'+esc(closingLabel(h.coe))+(h.coe>TODAY?' <span class="est">'+esc(t("est"))+'</span>':'')+(h.coe<=TODAY?'<span class="tag">'+esc(t("ready_tag"))+'</span>':'')+'</span></div></div>';
+   '<div class="links">'+(drop||'')+'<span class="facts">'+esc(closingLabel(h.coe))+(h.coe>TODAY?' <span class="est">'+esc(t("est"))+'</span>':'')+(h.coe<=TODAY?'<span class="tag">'+esc(t("ready_tag"))+'</span>':'')+'</span><button class="btn ghost cardbtn" type="button" data-card="'+H.indexOf(h)+'">&#128247; '+esc(t("card"))+'</button></div></div>';
 }
 function summaryChips(){
   const full=AREAS.filter(a=>areaState(a)===2);
@@ -571,6 +577,7 @@ function results(app){
   app.querySelectorAll("[data-more]").forEach(b=>b.onclick=()=>{S.shown[b.dataset.more]=999;render();});
   const mc=$("#moreComm"); if(mc)mc.onclick=()=>{S.commShown+=6;render();};
   const ma=$("#moreAll"); if(ma)ma.onclick=()=>{S.allShown+=40;render();};
+  app.querySelectorAll("[data-card]").forEach(b=>b.onclick=()=>{const h=H[+b.dataset.card];if(h){track("card-copy");copyCard(h);}});
   const pf=$("#pdf"); if(pf)pf.onclick=()=>{track("pdf");printList(list);};
   const sh=$("#share"); if(sh)sh.onclick=()=>{track("share-link");shareLink();};
   trackResults(list);
@@ -590,6 +597,56 @@ function copyList(list){
    "\n\n"+t("cp_foot",{name:CONTACT.name,title:t("title"),phone:CONTACT.phone,email:CONTACT.email});
   const fallback=()=>{const ta=document.createElement("textarea");ta.value=txt;document.body.appendChild(ta);ta.select();try{document.execCommand("copy");toast(t("copied"));}catch(e){}ta.remove();};
   try{navigator.clipboard.writeText(txt).then(()=>toast(t("copied")),fallback);}catch(e){fallback();}
+}
+
+/* ---------- copy a home card as an image ---------- */
+const CARD_C={navy:"#1B2A49",teal:"#0E7C86",pay:"#1D7A4A",ink:"#1F2B3D",mut:"#5A6678",bg:"#F3F5F8",drop:"#B32620",dropbg:"#FCE4E2"};
+async function makeCardBlob(h){
+  try{await Promise.all([document.fonts.load("900 40px Lato"),document.fonts.load("700 24px Lato")]);}catch(e){}
+  const W=1080,P=60,rtl=isRTL(),FF="Lato,'Segoe UI',Arial,sans-serif",K=CARD_C,iso=x=>rtl?"⁦"+x+"⁩":x;
+  const cv=document.createElement("canvas");cv.width=W;cv.height=1500;const c=cv.getContext("2d");c.direction=rtl?"rtl":"ltr";
+  const al=rtl?"right":"left",X0=rtl?W-P:P;
+  const fit=(txt,w,px,wt)=>{let s=px;do{c.font=wt+" "+s+"px "+FF;if(c.measureText(txt).width<=w||s<=20)break;s-=2;}while(true);};
+  const wrap=(txt,w,lh,y,px)=>{c.font="700 "+px+"px "+FF;const words=txt.split(" ");let line="";const lines=[];words.forEach(wd=>{const n=line?line+" "+wd:wd;if(c.measureText(n).width>w&&line){lines.push(line);line=wd;}else line=n;});lines.push(line);lines.forEach((l,i)=>c.fillText(l,X0,y+i*lh));return y+lines.length*lh;};
+  c.fillStyle="#fff";c.fillRect(0,0,W,1500);
+  c.fillStyle=K.navy;c.fillRect(0,0,W,130);
+  c.fillStyle="#fff";c.textAlign=al;c.textBaseline="middle";c.font="700 30px "+FF;c.fillText(t("card_tag").toUpperCase()+"  ·  "+C[h.c].name,X0,65,W-2*P);
+  c.textBaseline="alphabetic";let y=200;
+  c.fillStyle=K.ink;fit(h.addr,W-2*P,64,900);c.fillText(iso(h.addr),X0,y+30);
+  y+=84;c.fillStyle=K.mut;c.font="700 34px "+FF;c.fillText(h.city+", TX",X0,y,W-2*P);
+  y+=40;
+  const big=S.cash?fmt(h.price):fmt(h.p[S.loan])+t("per_mo");
+  c.fillStyle=S.cash?K.teal:K.pay;fit(big,W-2*P,112,900);c.fillText(iso(big),X0,y+100);
+  y+=100;c.fillStyle=K.mut;c.font="700 28px "+FF;c.fillText(S.cash?t("card_cashp"):t("card_pay",{l:loanName(S.loan)}),X0,y+48,W-2*P);y+=48;
+  if(h.df){const txt=t("dropped",{x:fmt(h.df-h.price)})+" ("+t("was",{x:fmt(h.df)})+")";c.font="900 26px "+FF;const w=Math.min(W-2*P,c.measureText(txt).width+44);const bx=rtl?W-P-w:P;
+    c.fillStyle=K.dropbg;c.beginPath();c.roundRect(bx,y+22,w,52,26);c.fill();c.fillStyle=K.drop;c.textAlign="center";c.fillText(txt,bx+w/2,y+57,w-20);c.textAlign=al;y+=62;}
+  const mv=closingLabel(h.coe)+(h.coe>TODAY?" "+t("est"):"");
+  const items=[S.cash?[t("card_taxins"),fmt(h.p.Cash)]:[t("card_price"),fmt(h.price)],[t("card_size"),t("card_sqft",{n:num(h.sf)})],[t("card_bd"),String(h.bd)],[t("card_ba"),String(h.ba)],[t("card_plan"),iso(h.plan)+" · "+t("story",{n:h.fl}).replace("{n}",h.fl)],[t("card_move"),mv]];
+  const gy=y+40,gw=(W-2*P-24)/2,gh=150;
+  items.forEach((it,i)=>{const col=i%2,row=Math.floor(i/2);let bx=P+col*(gw+24);if(rtl)bx=W-bx-gw;const by=gy+row*(gh+22);
+    c.fillStyle=K.bg;c.beginPath();c.roundRect(bx,by,gw,gh,22);c.fill();
+    const tx=rtl?bx+gw-28:bx+28;c.textAlign=al;c.fillStyle=K.mut;c.font="700 22px "+FF;c.fillText(it[0].toUpperCase(),tx,by+48,gw-56);
+    c.fillStyle=K.ink;fit(it[1],gw-56,42,900);c.fillText(it[1],tx,by+108);});
+  const fy=gy+3*(gh+22)+10;
+  c.fillStyle=K.navy;c.fillRect(0,fy,W,1500-fy);
+  c.fillStyle="#fff";c.textAlign=al;c.font="900 38px "+FF;c.fillText(CONTACT.name,X0,fy+62,W-2*P);
+  c.font="700 26px "+FF;c.fillStyle="#D6DCEA";c.fillText(t("title")+", Lennar",X0,fy+102,W-2*P);
+  c.fillStyle="#fff";c.font="700 30px "+FF;c.fillText(iso(CONTACT.phone+"   ·   "+CONTACT.email),X0,fy+152,W-2*P);
+  c.fillStyle="#B8C2DA";let ey=wrap(S.cash?t("card_est_cash"):t("card_est_loan",{l:loanName(S.loan),r:rateTxt(S.loan)}),W-2*P,30,fy+200,22);
+  c.fillText(t("card_upd",{d:iso(DATA.updated)}),X0,ey+6);
+  const H2=Math.round(ey+44);const out=document.createElement("canvas");out.width=W;out.height=H2;const o=out.getContext("2d");o.drawImage(cv,0,0);o.fillStyle=K.navy;o.fillRect(0,H2-10,W,10);
+  return new Promise((res,rej)=>out.toBlob(b=>b?res(b):rej(new Error("toBlob")),"image/png"));
+}
+function showCard(blob){
+  const url=URL.createObjectURL(blob),o=document.createElement("div");o.className="ov";o.setAttribute("role","dialog");o.setAttribute("aria-modal","true");
+  o.innerHTML='<div class="dlg card"><b>'+esc(t("card_h"))+'</b><p>'+esc(t("card_save"))+'</p><img alt="" src="'+url+'"><div class="row"><a class="btn ghost" download="home-card.png" href="'+url+'">'+esc(t("card_dl"))+'</a><button class="btn ghost" type="button">'+esc(t("card_x"))+'</button></div></div>';
+  const close=()=>{o.remove();URL.revokeObjectURL(url);document.removeEventListener("keydown",k);},k=e=>{if(e.key==="Escape")close();};
+  document.addEventListener("keydown",k);o.onclick=e=>{if(e.target===o)close();};o.querySelector("button").onclick=close;document.body.appendChild(o);o.querySelector("button").focus();
+}
+async function copyCard(h){
+  const p=makeCardBlob(h);p.catch(()=>{});
+  try{await navigator.clipboard.write([new ClipboardItem({"image/png":p})]);toast(t("card_ok"));}
+  catch(e){try{showCard(await p);}catch(e2){}}
 }
 
 /* ---------- share link + visitor counts ---------- */
