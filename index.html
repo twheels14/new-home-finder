@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="description" content="Answer four quick questions and see available Lennar new homes with the monthly payment already worked out. Trevor Wheeler, New Home Consultant.">
@@ -83,6 +84,16 @@ h2{font-size:clamp(26px,5vw,34px);line-height:1.15;margin:4px 0 8px;font-weight:
 .seg{display:grid;grid-template-columns:1fr 1fr;border:2px solid var(--line);border-radius:14px;overflow:hidden;background:var(--surface)}
 .seg button{min-height:56px;border:0;background:none;font-weight:900;font-size:17px}
 .seg button[aria-pressed="true"]{background:var(--navy);color:var(--navy-ink)}
+.vax{display:flex;align-items:flex-start;gap:12px;width:100%;text-align:start;border:2px solid var(--line);background:var(--surface);border-radius:14px;padding:12px 14px;margin:14px 0 0;min-height:56px}
+.vax .box{flex:none;width:26px;height:26px;border:2px solid var(--muted);border-radius:7px;display:grid;place-items:center;font-weight:900;color:var(--navy-ink);margin-top:1px}
+.vax[aria-pressed="true"]{border-color:var(--teal);background:var(--teal-soft)}
+.vax[aria-pressed="true"] .box{background:var(--teal);border-color:var(--teal)}
+.vax[aria-pressed="true"] .box:after{content:"\2713"}
+.vax b{display:block;font-size:17px}.vax small{display:block;font-size:14px;color:var(--muted);font-weight:500;line-height:1.35}
+.srch{display:flex;gap:8px;margin:14px 0 4px}
+.srch input{flex:1;min-width:0;border:2px solid var(--line);background:var(--surface);color:var(--ink);border-radius:14px;padding:0 14px;min-height:52px;font-size:17px;font-weight:600}
+.srch input:focus{outline:0;border-color:var(--teal)}
+.srch .btn{width:auto;padding:0 18px;min-height:52px}
 .money{display:flex;align-items:center;gap:6px;background:var(--surface);border:2px solid var(--line);border-radius:14px;padding:0 16px;margin:16px 0;direction:ltr}
 .money:focus-within{border-color:var(--teal)}
 .money span{font-size:30px;font-weight:900;color:var(--muted)}
@@ -184,7 +195,7 @@ clear_all:"Clear all selections",tip_added:"added",tip_removed:"removed",tip_cir
 live_sel:"{n} community selected, {h} homes|{n} communities selected, {h} homes",live_none:"Nothing selected means anywhere.",map_aria:"Map of communities. Tap a dot to add or remove it.",
 q2_h:"What is your budget?",q2_sub_cash:"No loan needed. Enter the most you want to spend.",q2_sub_loan:"Enter the most you want to spend. Switch between a monthly payment and a total price.",
 with_loan:"With a loan",pay_cash:"Paying cash",monthly:"Monthly payment",total:"Total price",per_month:"per month, up to",up_to:"up to",
-loan_h:"Loan type used for payments",most_common:"(most common)",l_FHA:"3.5% down",l_Conventional:"10% down",l_VA:"0% down, veterans",l_USDA:"0% down, rural areas",l_DPA:"Down payment assistance, 0% down",n_Conventional:"Conventional",
+vax_h:"VA exempt",vax_d:"100% disabled veteran: leave property tax out of the monthly estimate",vax_note:" Property tax is left out because VA exempt is on. Any special assessment fees listed for the community are still included. Confirm your exemption with the county appraisal district.",q_ph:"Search community, city, or address",q_btn:"Search",q_or:"Or search for a specific community or address",q_res:"Search",sg_q:"Clear the search",c_q:"Search: {x}",loan_h:"Loan type used for payments",most_common:"(most common)",l_FHA:"3.5% down",l_Conventional:"10% down",l_VA:"0% down, veterans",l_USDA:"0% down, rural areas",l_DPA:"Down payment assistance, 0% down",n_Conventional:"Conventional",
 cash_note:"Each home will show its price, plus an estimate of the monthly property tax and insurance an owner pays.",
 fit:"{n} home fits so far|{n} homes fit so far",
 q3_h:"How much room do you need?",q3_sub:"Choose the fewest bedrooms you can live with.",bedrooms:"Bedrooms",sqft_h:"Square feet",any:"Any",
@@ -223,7 +234,7 @@ clear_all:"Borrar todas las selecciones",tip_added:"agregada",tip_removed:"quita
 live_sel:"{n} comunidad seleccionada, {h} casas|{n} comunidades seleccionadas, {h} casas",live_none:"Si no selecciona nada, se muestra todo.",map_aria:"Mapa de comunidades. Toque un punto para agregarlo o quitarlo.",
 q2_h:"¿Cuál es su presupuesto?",q2_sub_cash:"No se necesita préstamo. Ingrese lo máximo que desea gastar.",q2_sub_loan:"Ingrese lo máximo que desea gastar. Cambie entre pago mensual y precio total.",
 with_loan:"Con préstamo",pay_cash:"Pago en efectivo",monthly:"Pago mensual",total:"Precio total",per_month:"por mes, hasta",up_to:"hasta",
-loan_h:"Tipo de préstamo para los pagos",most_common:"(el más común)",l_FHA:"3.5% de enganche",l_Conventional:"10% de enganche",l_VA:"0% de enganche, veteranos",l_USDA:"0% de enganche, zonas rurales",l_DPA:"Asistencia para el enganche, 0% de enganche",n_Conventional:"Convencional",
+vax_h:"Exento VA",vax_d:"Veterano con 100% de discapacidad: no incluir el impuesto a la propiedad en el pago mensual",vax_note:" No se incluye el impuesto a la propiedad porque la opción Exento VA está activada. Las cuotas de evaluación especial de la comunidad, si las hay, sí se incluyen. Confirme su exención con el distrito de tasación del condado.",q_ph:"Buscar comunidad, ciudad o dirección",q_btn:"Buscar",q_or:"O busque una comunidad o dirección específica",q_res:"Buscar",sg_q:"Borrar la búsqueda",c_q:"Búsqueda: {x}",loan_h:"Tipo de préstamo para los pagos",most_common:"(el más común)",l_FHA:"3.5% de enganche",l_Conventional:"10% de enganche",l_VA:"0% de enganche, veteranos",l_USDA:"0% de enganche, zonas rurales",l_DPA:"Asistencia para el enganche, 0% de enganche",n_Conventional:"Convencional",
 cash_note:"Cada casa mostrará su precio y un estimado de los impuestos y el seguro mensuales que paga un propietario.",
 fit:"{n} casa cumple hasta ahora|{n} casas cumplen hasta ahora",
 q3_h:"¿Cuánto espacio necesita?",q3_sub:"Elija el menor número de recámaras con el que pueda vivir.",bedrooms:"Recámaras",sqft_h:"Pies cuadrados",any:"Cualquiera",
@@ -262,6 +273,7 @@ clear_all:"נקה את כל הבחירות",tip_added:"נוספה",tip_removed:"
 live_sel:"שכונה אחת נבחרה, {h} בתים|{n} שכונות נבחרו, {h} בתים",live_none:"אם לא בוחרים דבר, מוצגים כל האזורים.",map_aria:"מפת השכונות. הקש על נקודה להוספה או הסרה.",
 q2_h:"מה התקציב שלך?",q2_sub_cash:"אין צורך בהלוואה. הזן את הסכום המרבי שאתה רוצה להוציא.",q2_sub_loan:"הזן את הסכום המרבי שאתה רוצה להוציא. אפשר לבחור בין תשלום חודשי למחיר כולל.",
 with_loan:"עם הלוואה",pay_cash:"תשלום במזומן",monthly:"תשלום חודשי",total:"מחיר כולל",per_month:"לחודש, עד",up_to:"עד",
+vax_h:"פטור VA",vax_d:"חייל משוחרר נכה ב-100%: ללא מס רכוש בהערכת התשלום החודשי",vax_note:" מס הרכוש אינו נכלל כי האפשרות פטור VA פעילה. דמי הערכה מיוחדים שמפורטים עבור השכונה, אם יש, עדיין כלולים. יש לאשר את הפטור מול רשות שומת הנכסים של המחוז.",q_ph:"חיפוש שכונה, עיר או כתובת",q_btn:"חיפוש",q_or:"או חפשו שכונה או כתובת ספציפית",q_res:"חיפוש",sg_q:"נקה את החיפוש",c_q:"חיפוש: {x}",
 loan_h:"סוג ההלוואה לחישוב התשלומים",most_common:"(הנפוץ ביותר)",l_FHA:"3.5% מקדמה",l_Conventional:"10% מקדמה",l_VA:"ללא מקדמה, ותיקי צבא",l_USDA:"ללא מקדמה, אזורים כפריים",l_DPA:"סיוע במקדמה, ללא מקדמה",n_Conventional:"קונבנציונלית",
 cash_note:"כל בית יוצג עם מחירו ועם הערכה של מס הרכוש והביטוח החודשיים שמשלם בעל הבית.",
 fit:"בית אחד מתאים עד כה|{n} בתים מתאימים עד כה",
@@ -314,24 +326,28 @@ const LOANS={
 const LOANKEYS=["FHA","Conventional","VA","USDA","DPA"];
 const loanName=k=>k==="Conventional"?t("n_Conventional"):LOANS[k].name;
 const rateTxt=k=>(LOANS[k].r*100).toFixed(2)+"%";
-function payment(h,L){
+function payment(h,L,noTax){
   const l=LOANS[L], base=h.price*(1-l.d), loan=base*(1+l.f), r=l.r/12;
   const pi=loan*r/(1-Math.pow(1+r,-TERM));
   const mi=l.d>=.2?0:l.mi;
-  return Math.round(pi + h.price*h.tax*HS/12 + h.price*HOI/12 + base*mi/12 + C[h.c].sa/12);
+  return Math.round(pi + (noTax?0:h.price*h.tax*HS/12) + h.price*HOI/12 + base*mi/12 + C[h.c].sa/12);
 }
+const vaxOn=()=>S.loan==="VA"&&S.vax&&!S.cash;
+const pay=h=>vaxOn()?h.p.VAX:h.p[S.loan];
 const AREADEF=[["saO","g_sa"],["saS","g_sa"],["saE","g_sa"],["saW","g_sa"],["nb","g_bey"],["conv","g_bey"],["hill","g_bey"],["sanmarcos","g_bey"],["austin","g_bey"],["gaustin","g_bey"]];
 let TYPTAX=0.0237;
 const USDA={"Flint Ridge":1,"Friendship Oaks":1,"Gatehouse":1,"Juniper Ranch":1,"Morgan Heights":1,"Parkside":1,"Pradera":1,"Rancho Del Cielo":1,"Red Hawk Landing":1,"Steelwood Trails":1,"Voss Farms":1,"Bertram Oaks":2,"Cool Water at Sonterra":2,"Cotton Gateway":2,"Enclave at Horizon Pointe":2,"Flora Meadows":2,"Grace Gardens":2,"Grace Valley":2,"Higdon Crossing":2,"Kyndwood":2,"Lively Ranch":2,"Morgan Meadows":2,"Navarro Ranch":2,"Pleasanton Meadows":2,"Plum Creek North":2,"River Bridge Ranch":2,"Rose Valley":2,"Ruby Crossing":2,"Sapphire Grove":2,"Sky Ranch":2,"Smiley Ranch":2,"Stone Garden":2,"Summerside":2,"Sunshine Trails":2,"The Ridge at Knob Creek":2,"Thunder Rock":2,"Valle Sol":2,"Windridge":2};
 const usdaTag=c=>{const u=USDA[c.name];return u===1?'<span class="tag usda" title="'+esc(t("usda_tip"))+'">'+esc(t("usda_tag"))+'</span>':(u===2&&S.loan==="USDA"&&!S.cash)?'<span class="tag usda chk" title="'+esc(t("usda_chk_tip"))+'">'+esc(t("usda_chk"))+'</span>':'';};
-const usdaNote=()=>S.loan==="USDA"&&!S.cash?' '+t("usda_note"):'';
+const usdaNote=()=>(S.loan==="USDA"&&!S.cash?' '+t("usda_note"):'')+(vaxOn()?t("vax_note"):'');
+const vaxBtn=()=>S.loan==="VA"&&!S.cash?'<button class="vax" type="button" data-vax="1" aria-pressed="'+S.vax+'"><span class="box"></span><span><b>'+esc(t("vax_h"))+'</b><small>'+esc(t("vax_d"))+'</small></span></button>':'';
+const searchBox=(btn)=>'<form class="srch" id="srchf" role="search"><input id="q" type="search" enterkeyhint="search" autocomplete="off" placeholder="'+esc(t("q_ph"))+'" aria-label="'+esc(t("q_ph"))+'" value="'+esc(S.q)+'">'+(btn?'<button class="btn primary" type="submit">'+esc(t("q_btn"))+'</button>':'')+'</form>';
 const lowTag=c=>c.low?'<span class="tag low" title="'+esc(t("lowtax_tip",{x:(c.eff*100).toFixed(2)+"%",y:"",z:(TYPTAX*100).toFixed(2)+"%"}))+'">'+esc(t("lowtax"))+'</span>':'';
 const ctags=c=>usdaTag(c)+lowTag(c);
 function initData(d){
   DATA=d;
   C=d.c.map((a,i)=>({i,name:a[0],city:a[1],reg:a[2],lat:a[3],lon:a[4],sa:a[5],n:0}));
   H=d.h.map(a=>({c:a[0],coe:a[1],addr:a[2],plan:a[3],fl:a[4],bd:a[5],ba:a[6],sf:a[7],price:a[8],tax:a[9],city:a[10],df:a[11]||0,dd:a[12]||0}));
-  H.forEach(h=>{h.p={};for(const k in LOANS)h.p[k]=payment(h,k);C[h.c].n++;});
+  H.forEach(h=>{h.p={};for(const k in LOANS)h.p[k]=payment(h,k);h.p.VAX=payment(h,"VA",true);h.hay=(h.addr+" "+C[h.c].name+" "+h.city+" "+h.plan).toLowerCase();C[h.c].n++;});
   const byC={};H.forEach(h=>(byC[h.c]=byC[h.c]||[]).push(h));
   C.forEach(c=>{const hs=byC[c.i]||[];if(!hs.length){c.eff=null;return;}const tx=hs.map(h=>h.tax).sort((a,b)=>a-b),pr=hs.map(h=>h.price).sort((a,b)=>a-b);c.taxr=tx[tx.length>>1];c.eff=c.taxr+c.sa/pr[pr.length>>1];});
   const effs=C.map(c=>c.eff).filter(x=>x!=null).sort((a,b)=>a-b);TYPTAX=effs[effs.length>>1];
@@ -345,14 +361,15 @@ function areaDesc(a){
 }
 
 /* ---------- state ---------- */
-const S={cash:false,step:0,sel:new Set(),mode:"pay",budget:null,loan:"FHA",beds:0,sqft:0,when:0,dropsOnly:false,sort:"soon",fl:0,view:"comm",shown:{},allShown:40,commShown:6,mapView:"sa",draw:false,mapOpen:false,circle:null,tip:""};
+const S={cash:false,step:0,sel:new Set(),mode:"pay",budget:null,loan:"FHA",beds:0,sqft:0,when:0,dropsOnly:false,vax:false,q:"",sort:"soon",fl:0,view:"comm",shown:{},allShown:40,commShown:6,mapView:"sa",draw:false,mapOpen:false,circle:null,tip:""};
 const TODAY=(()=>{const d=new Date();return d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate();})();
 function addMonths(n){const d=new Date();d.setMonth(d.getMonth()+n);return d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate();}
 function matches(h,skip){
   skip=skip||{};
   if(S.loan==="USDA"&&!S.cash&&!USDA[C[h.c].name])return false;
+  if(!skip.q && S.q){const hy=h.hay;for(const w of S.q.toLowerCase().split(/\s+/))if(w&&hy.indexOf(w)<0)return false;}
   if(!skip.area && S.sel.size && !S.sel.has(h.c))return false;
-  if(!skip.budget && S.budget){ if(S.mode==="pay"&&!S.cash){ if(h.p[S.loan]>S.budget)return false; } else if(h.price>S.budget)return false; }
+  if(!skip.budget && S.budget){ if(S.mode==="pay"&&!S.cash){ if(pay(h)>S.budget)return false; } else if(h.price>S.budget)return false; }
   if(!skip.beds && S.beds && h.bd<S.beds)return false;
   if(!skip.sqft && S.sqft && h.sf<S.sqft)return false;
   if(!skip.fl && S.fl && h.fl!==S.fl)return false;
@@ -412,9 +429,11 @@ function welcome(app){
   app.innerHTML=incentBar()+'<section class="card hero"><h1>'+esc(t("w_h1"))+'</h1><p class="sub">'+esc(t("w_sub"))+'</p>'+
    '<div class="row"><button class="btn primary" id="start">'+esc(t("start"))+'</button>'+
    (nd?'<button class="btn drop" id="dropsGo">'+esc(t("drops_btn",{n:nd}))+'</button>':'')+'</div>'+
+   '<p class="sub" style="font-size:16px;margin:20px 0 0">'+esc(t("q_or"))+'</p>'+searchBox(true)+
    '<div class="stats"><span>'+esc(t("st_homes",{n:num(H.length)}))+'</span><span>'+esc(t("st_comms",{n:C.length}))+'</span><span>'+esc(t("st_upd",{d:DATA.updated}))+'</span></div></section>'+sheetLink();
   $("#start").onclick=()=>go(1);
-  const dg=$("#dropsGo"); if(dg)dg.onclick=()=>{S.sel.clear();S.budget=null;S.cash=false;S.beds=0;S.sqft=0;S.fl=0;S.when=0;S.dropsOnly=true;S.sort="soon";go(5);};
+  $("#srchf").onsubmit=e=>{e.preventDefault();const v=$("#q").value.trim();if(!v)return;S.q=v;S.sel.clear();S.budget=null;S.cash=false;S.beds=0;S.sqft=0;S.fl=0;S.when=0;S.dropsOnly=false;S.sort="soon";S.commShown=6;S.allShown=40;S.view="comm";go(5);};
+  const dg=$("#dropsGo"); if(dg)dg.onclick=()=>{S.sel.clear();S.budget=null;S.cash=false;S.beds=0;S.sqft=0;S.fl=0;S.when=0;S.dropsOnly=true;S.q="";S.sort="soon";go(5);};
 }
 function nav(back,nextLabel,skip){
   return '<div class="nav">'+(back!=null?'<button class="btn ghost" id="back">'+esc(t("back"))+'</button>':'')+
@@ -461,7 +480,7 @@ function qBudget(app){
    '<div class="live" id="live"></div>'+
    (cash?'<p class="sub" style="margin-top:18px;font-size:16px">'+esc(t("cash_note"))+'</p>':
    '<div class="loan"><p class="grp" style="margin-top:0">'+esc(t("loan_h"))+'</p><div class="grid">'+
-   LOANKEYS.map(k=>'<button class="opt" data-l="'+k+'" aria-pressed="'+(S.loan===k)+'"><span class="t">'+esc(loanName(k))+(k==="FHA"?' '+esc(t("most_common")):'')+'</span><span class="d">'+esc(t("l_"+k))+'</span></button>').join("")+'</div></div>')+
+   LOANKEYS.map(k=>'<button class="opt" data-l="'+k+'" aria-pressed="'+(S.loan===k)+'"><span class="t">'+esc(loanName(k))+(k==="FHA"?' '+esc(t("most_common")):'')+'</span><span class="d">'+esc(t("l_"+k))+'</span></button>').join("")+'</div></div>'+vaxBtn())+
    nav(1,t("cont"),true);
   app.innerHTML=h;
   const upd=()=>{const n=count();$("#live").textContent=S.budget?t("fit",{n}).replace("{n}",num(n)):"";};
@@ -470,6 +489,7 @@ function qBudget(app){
   app.querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>{S.mode=b.dataset.m;S.budget=null;qBudget(app);});
   app.querySelectorAll("[data-p]").forEach(b=>b.onclick=()=>{S.budget=+b.dataset.p;qBudget(app);});
   app.querySelectorAll("[data-l]").forEach(b=>b.onclick=()=>{S.loan=b.dataset.l;qBudget(app);});
+  app.querySelectorAll("[data-vax]").forEach(b=>b.onclick=()=>{S.vax=!S.vax;qBudget(app);});
   const inp=$("#bud");
   inp.oninput=()=>{const n=parseInt(inp.value.replace(/\D/g,""),10);S.budget=isNaN(n)||n===0?null:n;inp.value=S.budget?S.budget.toLocaleString("en-US"):"";
     app.querySelectorAll("[data-p]").forEach(b=>b.setAttribute("aria-pressed",S.budget===+b.dataset.p));upd();};
@@ -503,11 +523,11 @@ function qWhen(app){
 }
 
 /* results */
-const SORTS={soon:["s_soon",(a,b)=>a.coe-b.coe],pay:["s_pay",(a,b)=>a.p[S.loan]-b.p[S.loan]],price:["s_price",(a,b)=>a.price-b.price],size:["s_size",(a,b)=>b.sf-a.sf]};
+const SORTS={soon:["s_soon",(a,b)=>a.coe-b.coe],pay:["s_pay",(a,b)=>pay(a)-pay(b)],price:["s_price",(a,b)=>a.price-b.price],size:["s_size",(a,b)=>b.sf-a.sf]};
 function homeRow(h){
   const drop=h.df?'<span class="tag drop">'+esc(t("dropped",{x:fmt(h.df-h.price)}))+'</span> <span class="facts">'+esc(t("was",{x:fmt(h.df)}))+'</span>':'';
   return '<div class="home"><div><div class="addr">'+esc(h.addr)+'</div><div class="facts">'+esc(t("facts",{bd:h.bd,ba:h.ba,sf:num(h.sf),fl:t("story",{n:h.fl}).replace("{n}",h.fl),plan:h.plan}))+'</div></div>'+
-   (S.cash?'<div><div class="pay">'+m(h.price)+'</div><div class="price">'+t("taxins",{x:m(h.p.Cash)})+'</div></div>':'<div><div class="pay">'+m(h.p[S.loan])+'<small>'+esc(t("per_mo"))+'</small></div><div class="price">'+m(h.price)+'</div></div>')+
+   (S.cash?'<div><div class="pay">'+m(h.price)+'</div><div class="price">'+t("taxins",{x:m(h.p.Cash)})+'</div></div>':'<div><div class="pay">'+m(pay(h))+'<small>'+esc(t("per_mo"))+'</small></div><div class="price">'+m(h.price)+'</div></div>')+
    '<div class="links">'+(drop||'')+'<span class="facts">'+esc(closingLabel(h.coe))+(h.coe>TODAY?' <span class="est">'+esc(t("est"))+'</span>':'')+(h.coe<=TODAY?'<span class="tag">'+esc(t("ready_tag"))+'</span>':'')+'</span><button class="btn ghost cardbtn" type="button" data-card="'+H.indexOf(h)+'">&#128247; '+esc(t("card"))+'</button></div></div>';
 }
 function summaryChips(){
@@ -520,6 +540,7 @@ function summaryChips(){
 function suggestions(){
   const base=count(), out=[];
   const add=(label,fn,n)=>{if(n>base)out.push({label,fn,n});};
+  if(S.q)add(t("sg_q"),()=>S.q="",count({q:1}));
   if(S.dropsOnly)add(t("sg_drops"),()=>S.dropsOnly=false,count({drops:1}));
   if(S.sel.size)add(t("sg_area"),()=>S.sel.clear(),count({area:1}));
   if(S.beds)add(t("sg_beds"),()=>S.beds=0,count({beds:1}));
@@ -537,7 +558,7 @@ function results(app){
   if(S.cash&&S.sort==="pay")S.sort="soon";
   const list=H.filter(h=>matches(h)); const cmp=SORTS[S.sort][1];
   const nDrops=H.filter(h=>matches(h,{drops:1})&&h.df).length;
-  let h=incentBar()+'<p class="stepno">'+esc(t("your_results"))+'</p><div class="count">'+num(list.length)+' <small>'+esc(t("match",{n:list.length}))+'</small></div>'+summaryChips();
+  let h=incentBar()+'<p class="stepno">'+esc(t("your_results"))+'</p><div class="count">'+num(list.length)+' <small>'+esc(t("match",{n:list.length}))+'</small></div>'+summaryChips()+vaxBtn()+searchBox(false);
   const sg=list.length<6?suggestions():[];
   if(list.length===0)h+='<div class="card help"><h3>'+esc(t("nomatch_h"))+'</h3>';
   else if(sg.length)h+='<div class="card help"><h3>'+esc(t("more_opt_h"))+'</h3>';
@@ -551,7 +572,7 @@ function results(app){
       const g={};list.forEach(x=>(g[x.c]=g[x.c]||[]).push(x));
       const groups=Object.keys(g).map(k=>{const a=g[k].sort(cmp);return {c:C[k],a};}).sort((x,y)=>cmp(x.a[0],y.a[0]));
       groups.slice(0,S.commShown).forEach(G=>{
-        const pays=G.a.map(x=>x.p[S.loan]),prs=G.a.map(x=>x.price), lim=S.shown[G.c.i]||2, vis=G.a.slice(0,lim);
+        const pays=G.a.map(x=>pay(x)),prs=G.a.map(x=>x.price), lim=S.shown[G.c.i]||2, vis=G.a.slice(0,lim);
         const rng=(arr,suffix)=>'<bdi dir="ltr">'+fmt(Math.min(...arr))+(Math.min(...arr)===Math.max(...arr)?'':' &ndash; '+fmt(Math.max(...arr)))+'</bdi>'+(suffix||'');
         h+='<section class="card comm"><header><div><h3>'+esc(G.c.name)+ctags(G.c)+'</h3><div class="meta">'+esc(G.c.city)+', TX &middot; '+esc(t("comm_match",{n:G.a.length}))+'</div><a class="clink" href="'+mapsUrl(G.a[0])+'" target="_blank" rel="noopener">'+esc(t("view_map"))+' &#8599;</a></div>'+
            '<div class="rng">'+(S.cash?'':rng(pays,esc(t("per_mo")))+'<br>')+rng(prs)+'</div></header>'+
@@ -568,9 +589,12 @@ function results(app){
   if(SIGNUP_URL)h+='<div class="card help" style="margin-top:22px"><h3>'+esc(t("signup_h"))+'</h3><a class="btn primary" style="margin:4px 0" href="'+SIGNUP_URL+'" target="_blank" rel="noopener">'+esc(t("signup_btn"))+'</a></div>';
   app.innerHTML=h;
   app.querySelectorAll("[data-e]").forEach(b=>b.onclick=()=>go(+b.dataset.e));
+  app.querySelectorAll("[data-vax]").forEach(b=>b.onclick=()=>{S.vax=!S.vax;render();});
+  $("#srchf").onsubmit=e=>e.preventDefault();
+  $("#q").oninput=function(){const p=this.selectionStart;S.q=this.value.trim()?this.value:"";S.commShown=6;S.allShown=40;S.shown={};render();const e=$("#q");if(e){e.focus();try{e.setSelectionRange(p,p);}catch(_){}}};
   app.querySelectorAll("[data-nodrops]").forEach(b=>b.onclick=()=>{S.dropsOnly=false;render();});
   app.querySelectorAll("[data-sg]").forEach(b=>b.onclick=()=>{sg[+b.dataset.sg].fn();render();});
-  const rs=n=>{const e=$(n);if(e)e.onclick=()=>{S.sel.clear();S.budget=null;S.cash=false;S.mode="pay";S.sort="soon";S.beds=0;S.sqft=0;S.fl=0;S.when=0;S.dropsOnly=false;S.shown={};S.allShown=40;S.commShown=6;go(0);};};
+  const rs=n=>{const e=$(n);if(e)e.onclick=()=>{S.sel.clear();S.budget=null;S.cash=false;S.mode="pay";S.sort="soon";S.beds=0;S.sqft=0;S.fl=0;S.when=0;S.dropsOnly=false;S.q="";S.vax=false;S.shown={};S.allShown=40;S.commShown=6;go(0);};};
   rs("#restart");rs("#restart2");
   app.querySelectorAll("[data-vw]").forEach(b=>b.onclick=()=>{S.view=b.dataset.vw;render();});
   const dc=$("#dropsChip"); if(dc)dc.onclick=()=>{S.dropsOnly=!S.dropsOnly;S.commShown=6;render();};
@@ -587,14 +611,14 @@ function printList(list){
   const top=list.slice().sort(SORTS[S.sort][1]).slice(0,15);
   const head=S.cash?t("cp_head_cash",{n:list.length}):t("cp_head_loan",{n:list.length,l:loanName(S.loan)});
   $("#printSheet").innerHTML='<h1>'+esc(t("pdf_title"))+'</h1><p class="pm">'+esc(head)+'</p>'+
-   top.map(h=>'<div class="ph"><b>'+esc(h.addr)+'</b>, '+esc(h.city)+' &middot; '+esc(C[h.c].name)+'<br>'+esc(t("facts",{bd:h.bd,ba:h.ba,sf:num(h.sf),fl:t("story",{n:h.fl}).replace("{n}",h.fl),plan:h.plan}))+'<br><b>'+(S.cash?m(h.price)+' &middot; '+esc(t("taxins",{x:fmt(h.p.Cash)})):m(h.p[S.loan])+esc(t("per_mo"))+' &middot; '+m(h.price))+'</b> &middot; '+esc(closingLabel(h.coe))+(h.coe>TODAY?' '+esc(t("est")):'')+(h.df?' &middot; '+esc(t("dropped",{x:fmt(h.df-h.price)})):'')+'</div>').join("")+
+   top.map(h=>'<div class="ph"><b>'+esc(h.addr)+'</b>, '+esc(h.city)+' &middot; '+esc(C[h.c].name)+'<br>'+esc(t("facts",{bd:h.bd,ba:h.ba,sf:num(h.sf),fl:t("story",{n:h.fl}).replace("{n}",h.fl),plan:h.plan}))+'<br><b>'+(S.cash?m(h.price)+' &middot; '+esc(t("taxins",{x:fmt(h.p.Cash)})):m(pay(h))+esc(t("per_mo"))+' &middot; '+m(h.price))+'</b> &middot; '+esc(closingLabel(h.coe))+(h.coe>TODAY?' '+esc(t("est")):'')+(h.df?' &middot; '+esc(t("dropped",{x:fmt(h.df-h.price)})):'')+'</div>').join("")+
    '<p class="pm">'+esc(t("cp_foot",{name:CONTACT.name,title:t("title"),phone:CONTACT.phone,email:CONTACT.email}))+'</p><p class="pm">'+esc(S.cash?t("disc_cash",{d:DATA.updated}):t("disc_loan",{l:loanName(S.loan),note:t("l_"+S.loan).replace(/\s*\(.*\)$/,""),r:rateTxt(S.loan),d:DATA.updated})+usdaNote())+'</p>';
   window.print();
 }
 function copyList(list){
   const top=list.slice().sort(SORTS[S.sort][1]).slice(0,10);
   const txt=(S.cash?t("cp_head_cash",{n:list.length}):t("cp_head_loan",{n:list.length,l:loanName(S.loan)}))+"\n\n"+
-   top.map(h=>h.addr+", "+h.city+" ("+C[h.c].name+")\n"+t(S.cash?"cp_line_cash":"cp_line_loan",{bd:h.bd,ba:h.ba,sf:num(h.sf),price:fmt(h.price),pay:fmt(S.cash?h.p.Cash:h.p[S.loan])})+(h.df?" ▼ "+fmt(h.df-h.price):"")).join("\n\n")+
+   top.map(h=>h.addr+", "+h.city+" ("+C[h.c].name+")\n"+t(S.cash?"cp_line_cash":"cp_line_loan",{bd:h.bd,ba:h.ba,sf:num(h.sf),price:fmt(h.price),pay:fmt(S.cash?h.p.Cash:pay(h))})+(h.df?" ▼ "+fmt(h.df-h.price):"")).join("\n\n")+
    "\n\n"+t("cp_foot",{name:CONTACT.name,title:t("title"),phone:CONTACT.phone,email:CONTACT.email});
   const fallback=()=>{const ta=document.createElement("textarea");ta.value=txt;document.body.appendChild(ta);ta.select();try{document.execCommand("copy");toast(t("copied"));}catch(e){}ta.remove();};
   try{navigator.clipboard.writeText(txt).then(()=>toast(t("copied")),fallback);}catch(e){fallback();}
@@ -616,7 +640,7 @@ async function makeCardBlob(h){
   c.fillStyle=K.ink;fit(h.addr,W-2*P,64,900);c.fillText(iso(h.addr),X0,y+30);
   y+=84;c.fillStyle=K.mut;c.font="700 34px "+FF;c.fillText(h.city+", TX",X0,y,W-2*P);
   y+=40;
-  const big=S.cash?fmt(h.price):fmt(h.p[S.loan])+t("per_mo");
+  const big=S.cash?fmt(h.price):fmt(pay(h))+t("per_mo");
   c.fillStyle=S.cash?K.teal:K.pay;fit(big,W-2*P,112,900);c.fillText(iso(big),X0,y+100);
   y+=100;c.fillStyle=K.mut;c.font="700 28px "+FF;c.fillText(S.cash?t("card_cashp"):t("card_pay",{l:loanName(S.loan)}),X0,y+48,W-2*P);y+=48;
   if(h.df){const txt=t("dropped",{x:fmt(h.df-h.price)})+" ("+t("was",{x:fmt(h.df)})+")";c.font="900 26px "+FF;const w=Math.min(W-2*P,c.measureText(txt).width+44);const bx=rtl?W-P-w:P;
@@ -633,7 +657,7 @@ async function makeCardBlob(h){
   c.fillStyle="#fff";c.textAlign=al;c.font="900 38px "+FF;c.fillText(CONTACT.name,X0,fy+62,W-2*P);
   c.font="700 26px "+FF;c.fillStyle="#D6DCEA";c.fillText(t("title")+", Lennar",X0,fy+102,W-2*P);
   c.fillStyle="#fff";c.font="700 30px "+FF;c.fillText(iso(CONTACT.phone+"   ·   "+CONTACT.email),X0,fy+152,W-2*P);
-  c.fillStyle="#B8C2DA";let ey=wrap(S.cash?t("card_est_cash"):t("card_est_loan",{l:loanName(S.loan),r:rateTxt(S.loan)}),W-2*P,30,fy+200,22);
+  c.fillStyle="#B8C2DA";let ey=wrap(S.cash?t("card_est_cash"):t("card_est_loan",{l:loanName(S.loan),r:rateTxt(S.loan)})+(vaxOn()?t("vax_note"):""),W-2*P,30,fy+200,22);
   c.fillText(t("card_upd",{d:iso(DATA.updated)}),X0,ey+6);
   const H2=Math.round(ey+44);const out=document.createElement("canvas");out.width=W;out.height=H2;const o=out.getContext("2d");o.drawImage(cv,0,0);o.fillStyle=K.navy;o.fillRect(0,H2-10,W,10);
   return new Promise((res,rej)=>out.toBlob(b=>b?res(b):rej(new Error("toBlob")),"image/png"));
@@ -664,7 +688,7 @@ function trackResults(list){
 document.addEventListener("click",e=>{const a=e.target.closest&&e.target.closest(".tour");if(a)track("tour-now");});
 if(ANALYTICS.code){const sc=document.createElement("script");sc.async=true;sc.dataset.goatcounter="https://"+ANALYTICS.code+".goatcounter.com/count";sc.src="https://gc.zgo.at/count.js";document.head.appendChild(sc);}
 function shareState(){
-  const o={a:[...S.sel].map(i=>C[i].name+"|"+C[i].city),c:S.cash?1:0,m:S.mode,b:S.budget||0,l:S.loan,bd:S.beds,sf:S.sqft,fl:S.fl,w:S.when,d:S.dropsOnly?1:0,s:S.sort,v:S.view,g:LANG};
+  const o={a:[...S.sel].map(i=>C[i].name+"|"+C[i].city),c:S.cash?1:0,m:S.mode,b:S.budget||0,l:S.loan,bd:S.beds,sf:S.sqft,fl:S.fl,w:S.when,d:S.dropsOnly?1:0,vx:S.vax?1:0,q:S.q,s:S.sort,v:S.view,g:LANG};
   return o;
 }
 function shareLink(){
@@ -679,7 +703,7 @@ function applyShared(){
     const keys=new Map(C.map(c=>[c.name+"|"+c.city,c.i]));
     S.sel=new Set((o.a||[]).map(k=>keys.get(k)).filter(i=>i!=null));
     S.cash=!!o.c; S.mode=o.m==="price"?"price":"pay"; S.budget=+o.b||null; if(LOANS[o.l]&&o.l!=="Cash")S.loan=o.l;
-    S.beds=+o.bd||0; S.sqft=+o.sf||0; S.fl=(+o.fl===1||+o.fl===2)?+o.fl:0; S.when=+o.w||0; S.dropsOnly=!!o.d; if(SORTS[o.s])S.sort=o.s; if(o.v==="all"||o.v==="comm")S.view=o.v;
+    S.beds=+o.bd||0; S.sqft=+o.sf||0; S.fl=(+o.fl===1||+o.fl===2)?+o.fl:0; S.when=+o.w||0; S.dropsOnly=!!o.d;S.vax=!!o.vx;S.q=typeof o.q==='string'?o.q.slice(0,80):''; if(SORTS[o.s])S.sort=o.s; if(o.v==="all"||o.v==="comm")S.view=o.v;
     if(o.g&&T[o.g]&&!localStorage.getItem("nhf-lang")){LANG=o.g;applyLang();}
     S.step=5; return true;
   }catch(e){return false;}
@@ -692,3 +716,4 @@ fetch("data.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw 0;return r.json();
 </script>
 
 </body></html>
+
