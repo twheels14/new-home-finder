@@ -129,6 +129,9 @@ form.srch .btn{width:auto;flex:none;padding:0 20px;min-height:52px}
 .home .addr{font-weight:900;font-size:18px;direction:ltr;text-align:start}
 html[dir="rtl"] .home .addr{text-align:right}
 .home .facts{font-size:15px;color:var(--muted)}
+.home.hasth{grid-template-columns:104px 1fr auto}
+.home .th{width:104px;height:58px;border-radius:10px;object-fit:cover;background:var(--line);display:block}
+@media (max-width:520px){.home.hasth{grid-template-columns:80px 1fr;align-items:start}.home.hasth .th{grid-row:1/span 2;width:80px;height:56px;margin-top:2px}.home.hasth .pay,.home.hasth .price{text-align:start}}
 .home .pay{font-size:26px;font-weight:900;color:var(--pay);text-align:end;font-variant-numeric:tabular-nums;line-height:1.1}
 .home .pay small{font-size:14px;font-weight:700;color:var(--muted)}
 .home .price{font-size:15px;text-align:end;color:var(--muted);font-variant-numeric:tabular-nums}
@@ -524,9 +527,13 @@ function qWhen(app){
 
 /* results */
 const SORTS={soon:["s_soon",(a,b)=>a.coe-b.coe],pay:["s_pay",(a,b)=>pay(a)-pay(b)],price:["s_price",(a,b)=>a.price-b.price],size:["s_size",(a,b)=>b.sf-a.sf]};
+const THUMBS=new Set(["aaron","albany","ames","aplin","aplin-ii","aruba","astoria","avas","avery","baja","barlow","beckman","bergen","bonds","bora","brayton","bridle","brock","brower","bryce","cambria","canon","capri","carmel","carter","catesby","chappell","chauncy","cibola","claiborne","clearwater","cobb","collins","cornwall","cumberland","deerbrook","denley","dickens","dimaggio","dowing","duff","dylan","eden","elton","felton","fernbrook","frey","gates","gehrig","gerson","hazel","hemingway","hendrix","highgate","hoffman","hudson","idlewood","jagger","joplin","kitson","kofa","larwood","levi","littleton","lucia","luna","mantle","marion","mason","mayer","mays","melville","mia","montour","morrow","napali","nash","navarre","netcher","newfield","newlin","niles","oakridge","oberlin","oxford","palma","pierson","pima","pinehollow","portofino","ramsey","ridgeland","rio","riviera","rosedale","roseman","ruth","sabas","santana","santiago","santo","sentosa","sherman","siesta","springsteen","steely","steinbeck","tilley","timms","tobin","townshend","twain","vinewood","wagner","walsh","wathen","whiles","whitetail","windrow","windyhill","winsdale","winstead"]);
+const thumbSlug=p=>{let s=String(p||"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");if(THUMBS.has(s))return s;s=s.replace(/-20x20-garage$/,"");return THUMBS.has(s)?s:"";};
+const IMGBASE=((["localhost","127.0.0.1"].includes(location.hostname)||location.hostname==="homeswithtrevor.com")?"":"https://homeswithtrevor.com/")+"img/";
 function homeRow(h){
   const drop=h.df?'<span class="tag drop">'+esc(t("dropped",{x:fmt(h.df-h.price)}))+'</span> <span class="facts">'+esc(t("was",{x:fmt(h.df)}))+'</span>':'';
-  return '<div class="home"><div><div class="addr">'+esc(h.addr)+'</div><div class="facts">'+esc(t("facts",{bd:h.bd,ba:h.ba,sf:num(h.sf),fl:t("story",{n:h.fl}).replace("{n}",h.fl),plan:h.plan}))+'</div></div>'+
+  const ts=thumbSlug(h.plan);
+  return '<div class="home'+(ts?' hasth':'')+'">'+(ts?'<img class="th" alt="" loading="lazy" decoding="async" width="104" height="58" src="'+IMGBASE+'s/'+ts+'.jpg" onerror="this.parentNode.classList.remove(\'hasth\');this.remove()">':'')+'<div><div class="addr">'+esc(h.addr)+'</div><div class="facts">'+esc(t("facts",{bd:h.bd,ba:h.ba,sf:num(h.sf),fl:t("story",{n:h.fl}).replace("{n}",h.fl),plan:h.plan}))+'</div></div>'+
    (S.cash?'<div><div class="pay">'+m(h.price)+'</div><div class="price">'+t("taxins",{x:m(h.p.Cash)})+'</div></div>':'<div><div class="pay">'+m(pay(h))+'<small>'+esc(t("per_mo"))+'</small></div><div class="price">'+m(h.price)+'</div></div>')+
    '<div class="links">'+(drop||'')+'<span class="facts">'+esc(closingLabel(h.coe))+(h.coe>TODAY?' <span class="est">'+esc(t("est"))+'</span>':'')+(h.coe<=TODAY?'<span class="tag">'+esc(t("ready_tag"))+'</span>':'')+'</span><button class="btn ghost cardbtn" type="button" data-card="'+H.indexOf(h)+'">&#128247; '+esc(t("card"))+'</button></div></div>';
 }
@@ -628,15 +635,19 @@ function copyList(list){
 const CARD_C={navy:"#1B2A49",teal:"#0E7C86",pay:"#1D7A4A",ink:"#1F2B3D",mut:"#5A6678",bg:"#F3F5F8",drop:"#B32620",dropbg:"#FCE4E2"};
 async function makeCardBlob(h){
   try{await Promise.all([document.fonts.load("900 40px Lato"),document.fonts.load("700 24px Lato")]);}catch(e){}
+  const ts=thumbSlug(h.plan);let pic=null;
+  if(ts){try{pic=await new Promise((ok,no)=>{const im=new Image();im.crossOrigin="anonymous";im.onload=()=>ok(im);im.onerror=no;im.src=IMGBASE+"l/"+ts+".jpg";});}catch(e){pic=null;}}
+  const PH=pic?420:0,shift=pic?PH+44:0,CH=1500+shift;
   const W=1080,P=60,rtl=isRTL(),FF="Lato,'Segoe UI',Arial,sans-serif",K=CARD_C,iso=x=>rtl?"⁦"+x+"⁩":x;
-  const cv=document.createElement("canvas");cv.width=W;cv.height=1500;const c=cv.getContext("2d");c.direction=rtl?"rtl":"ltr";
+  const cv=document.createElement("canvas");cv.width=W;cv.height=CH;const c=cv.getContext("2d");c.direction=rtl?"rtl":"ltr";
   const al=rtl?"right":"left",X0=rtl?W-P:P;
   const fit=(txt,w,px,wt)=>{let s=px;do{c.font=wt+" "+s+"px "+FF;if(c.measureText(txt).width<=w||s<=20)break;s-=2;}while(true);};
   const wrap=(txt,w,lh,y,px)=>{c.font="700 "+px+"px "+FF;const words=txt.split(" ");let line="";const lines=[];words.forEach(wd=>{const n=line?line+" "+wd:wd;if(c.measureText(n).width>w&&line){lines.push(line);line=wd;}else line=n;});lines.push(line);lines.forEach((l,i)=>c.fillText(l,X0,y+i*lh));return y+lines.length*lh;};
-  c.fillStyle="#fff";c.fillRect(0,0,W,1500);
+  c.fillStyle="#fff";c.fillRect(0,0,W,CH);
   c.fillStyle=K.navy;c.fillRect(0,0,W,130);
   c.fillStyle="#fff";c.textAlign=al;c.textBaseline="middle";c.font="700 30px "+FF;c.fillText(t("card_tag").toUpperCase()+"  ·  "+C[h.c].name,X0,65,W-2*P);
-  c.textBaseline="alphabetic";let y=200;
+  c.textBaseline="alphabetic";let y=200+shift;
+  if(pic){const pw=W-2*P,sc=Math.max(pw/pic.width,PH/pic.height),dw=pic.width*sc,dh=pic.height*sc;c.save();c.beginPath();c.roundRect(P,160,pw,PH,28);c.clip();c.drawImage(pic,P+(pw-dw)/2,160+(PH-dh)*0.62,dw,dh);c.restore();}
   c.fillStyle=K.ink;fit(h.addr,W-2*P,64,900);c.fillText(iso(h.addr),X0,y+30);
   y+=84;c.fillStyle=K.mut;c.font="700 34px "+FF;c.fillText(h.city+", TX",X0,y,W-2*P);
   y+=40;
@@ -653,7 +664,7 @@ async function makeCardBlob(h){
     const tx=rtl?bx+gw-28:bx+28;c.textAlign=al;c.fillStyle=K.mut;c.font="700 22px "+FF;c.fillText(it[0].toUpperCase(),tx,by+48,gw-56);
     c.fillStyle=K.ink;fit(it[1],gw-56,42,900);c.fillText(it[1],tx,by+108);});
   const fy=gy+3*(gh+22)+10;
-  c.fillStyle=K.navy;c.fillRect(0,fy,W,1500-fy);
+  c.fillStyle=K.navy;c.fillRect(0,fy,W,CH-fy);
   c.fillStyle="#fff";c.textAlign=al;c.font="900 38px "+FF;c.fillText(CONTACT.name,X0,fy+62,W-2*P);
   c.font="700 26px "+FF;c.fillStyle="#D6DCEA";c.fillText(t("title")+", Lennar",X0,fy+102,W-2*P);
   c.fillStyle="#fff";c.font="700 30px "+FF;c.fillText(iso(CONTACT.phone+"   ·   "+CONTACT.email),X0,fy+152,W-2*P);
